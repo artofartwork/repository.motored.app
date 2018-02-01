@@ -55,7 +55,7 @@
                             style="@style/spinner_style"
                             android:layout_width="156dp"
                             android:layout_height="match_parent"></Spinner>
-                        style="@style/spinner_style">
+
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
