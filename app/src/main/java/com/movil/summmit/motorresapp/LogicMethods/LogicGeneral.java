@@ -9,6 +9,7 @@ import com.movil.summmit.motorresapp.Request.ReturnValue;
 import com.movil.summmit.motorresapp.Storage.Files.FilesControl;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -101,6 +102,41 @@ public class LogicGeneral {
         }
     }
 
+    public int syncmultifiles(String data, List<File> files, File fileScanner)
+    {
+        try
+        {
+            RequestBody dataJson =
+                    RequestBody.create(
+                            okhttp3.MultipartBody.FORM, data);
+
+           MultipartBody.Part bodyScanner = getObjtectReuest(fileScanner, "fileScanner");
+
+
+            Call<ReturnValue> call = ApiClienteInformes.getMyApiClient().syncInformeTecnicoDos(dataJson, bodyScanner);
+            call.enqueue(new Callback<ReturnValue>() {
+                @Override
+                public void onResponse(Call<ReturnValue> call, Response<ReturnValue> response) {
+
+                    Log.d("Upload", "success");
+                }
+
+                @Override
+                public void onFailure(Call<ReturnValue> call, Throwable t) {
+
+                    Log.d("Upload error:", t.getMessage());
+
+                }
+            });
+
+
+            return 1;
+        }
+        catch (Exception e)
+        {
+            return 0;
+        }
+    }
 
     private MultipartBody.Part getObjtectReuest(File archivo , String name)
     {
@@ -113,9 +149,8 @@ public class LogicGeneral {
                         archivo
                 );
 
-        MultipartBody.Part body =
-                MultipartBody.Part.createFormData(name, archivo.getName(), requestFile);
+       return MultipartBody.Part.createFormData(name, archivo.getName(), requestFile);
 
-        return body;
+        //return body;
     }
 }

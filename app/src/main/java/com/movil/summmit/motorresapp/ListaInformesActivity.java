@@ -341,7 +341,7 @@ public class ListaInformesActivity extends AppCompatActivity {
     {
         try {
 
-            InformeTecnico objInforme = repository.informeTecnicoRepository().findEntidad(8);
+            InformeTecnico objInforme = repository.informeTecnicoRepository().findAll().get(0);
             List<InformeTecnicoFalla> listaFallas = repository.informeTecnicoFallaRepository().findAllxInforme(objInforme.getIdInformeTecnico());
             objInforme.setListaFallas(listaFallas);
             List<InformeTecnicoConclusiones> listaConclusiones = repository.informeTecnicoConclusionesRepository().findAllxInforme(objInforme.getIdInformeTecnico());

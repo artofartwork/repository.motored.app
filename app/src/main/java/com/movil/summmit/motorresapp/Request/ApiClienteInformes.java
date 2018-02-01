@@ -80,6 +80,13 @@ public class ApiClienteInformes {
                 @Part MultipartBody.Part fileScanner
         );
 
+        @Multipart
+        @POST("/InformeTecnico/subirdataDos")
+        Call<ReturnValue> uploadfilesmulti(
+                @Part("dataJson") RequestBody dataJson,
+                @Part List<MultipartBody.Part> files
+        );
+
 
         //  @POST("/api/login")
         // Call<LogInResponse> login(@Body LogInRaw raw);

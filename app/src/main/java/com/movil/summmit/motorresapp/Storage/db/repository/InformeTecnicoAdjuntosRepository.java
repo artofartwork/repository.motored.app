@@ -6,6 +6,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntos;
 import com.movil.summmit.motorresapp.Storage.db.DatabaseHelper;
 import com.movil.summmit.motorresapp.Storage.db.manager.DatabaseManager;
@@ -90,19 +91,25 @@ public class InformeTecnicoAdjuntosRepository {
         try {
 
 
+
+
             QueryBuilder<InformeTecnicoAdjuntos, Integer> queryBuilder =
                     entidadDao.queryBuilder();
 
-            queryBuilder.where().eq("IdInformeTecnico", IdInformeTecnico);
+            Where<InformeTecnicoAdjuntos, Integer> where = queryBuilder.where();
+
+            where.eq("IdInformeTecnico", IdInformeTecnico);
 
             PreparedQuery<InformeTecnicoAdjuntos> preparedQuery = queryBuilder.prepare();
 
-            entidadDao.queryForFirst(preparedQuery);
+           return entidadDao. queryForFirst(preparedQuery);
+
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
 
-        return null;
+
     }
 
     public long getNumberOfNotes() throws SQLException {
