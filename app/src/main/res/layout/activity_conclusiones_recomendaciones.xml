@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondoMotored"
     tools:context="com.movil.summmit.motorresapp.ConclusionesRecomendacionesActivity">
 
 
@@ -37,11 +38,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <Button
+                            android:background="@drawable/button_motored"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
                             android:id="@+id/btnConclusiones"
                             android:text="Agregar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="1dp"/>
                         <EditText
+
                             android:id="@+id/edtConclusiones"
                             android:layout_marginLeft="4dp"
                             android:background="@drawable/border_edittext"
@@ -69,10 +78,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <Button
+                            android:background="@drawable/button_motored"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
                             android:id="@+id/btnRecomendaciones"
                             android:text="Agregar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="1dp"/>
                         <EditText
                             android:id="@+id/edtRecomendaciones"
                             android:layout_marginLeft="4dp"
@@ -83,6 +99,7 @@
 
                     </LinearLayout>
                     <ListView
+
                         android:id="@+id/lsvRecomendaciones"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">

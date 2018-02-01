@@ -4,6 +4,7 @@ xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:background="@color/fondoMotored"
 >
 <ImageView
     android:layout_width="200dp"
@@ -30,9 +31,11 @@ android:layout_height="match_parent"
             android:id="@+id/tmpUser"
             android:layout_marginTop="100dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_edittext"
+>
             <EditText
-
+                android:backgroundTint="@color/noUnderline"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -42,29 +45,49 @@ android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="169dp" />
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="1dp"/>
         </android.support.design.widget.TextInputLayout>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="10dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tmpPass"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_edittext">
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="1dp"/>
             <EditText
+                android:backgroundTint="@color/noUnderline"
+                android:id="@+id/etePassword"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Password"
-                android:id="@+id/etePassword"
+                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
-                android:layout_centerHorizontal="true" />
+                android:hint="Password"
+                android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="10dp"/>
 
 
         <Button
+            android:background="@drawable/button_motored"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:background="#D5EDED"
             android:text="Ingresar"
             android:id="@+id/btnLogin"
             android:onClick="Logueo"

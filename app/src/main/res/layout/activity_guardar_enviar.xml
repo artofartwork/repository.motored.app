@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondoMotored"
     tools:context="com.movil.summmit.motorresapp.GuardarEnviarActivity">
 
 
@@ -15,6 +16,9 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:background="@drawable/button_motored"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:id="@+id/btnGuardar"
             android:onClick="finalizar"
             android:layout_width="200dp"
@@ -22,6 +26,9 @@
             android:text="Guardar"/>
 
         <Button
+            android:background="@drawable/button_motored"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:id="@+id/btnEnviar"
             android:onClick="finalizar"
             android:layout_marginTop="10dp"

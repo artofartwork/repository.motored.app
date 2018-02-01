@@ -5,7 +5,7 @@
     android:id="@+id/flayLoading"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#88000000"
+    android:background="@color/fondoMotored"
     android:visibility="gone"
     android:clickable="true">
 
