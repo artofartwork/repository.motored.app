@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.movil.summmit.motorresapp.VerInformeTecnicoActivity">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:background="@drawable/border"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empresa"/>
+            <TextView
+                android:entries="@array/opciones_arrays"
+                android:text="MOTORRED"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sucursal"/>
+            <TextView
+                android:entries="@array/opciones_arrays"
+                android:text="Sucursal 1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Area"/>
+            <TextView
+                android:text="Area 1"
+
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/border"
+
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="N° OT"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="8745"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marca"/>
+            <TextView
+               android:text="Marca 1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modelo"/>
+            <TextView
+                android:text="Modelo 1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:padding="3dp"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cliente"/>
+                    <TextView
+                        android:text="Juan Peres, Pedro Ramos, Juana Mejia"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="VIN"/>
+                    <TextView
+                        android:text="VIN 1"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="KM"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"></TextView>
+
+                    <TextView
+                        android:text="190"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border"
+
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="Horometro"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"></TextView>
+
+                    <TextView
+                        android:text="90"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Componente"/>
+                    <TextView
+                        android:text="Componente 1"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/border"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                            android:text="Serie"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"></TextView>
+
+                    <TextView
+                        android:text="DFF-471"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aplicacion"/>
+                    <TextView
+                       android:text="Aplicacion 1"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha inicio garantia"/>
+                    <TextView
+                        android:enabled="false"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:text="2018/05/02"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha Falla"/>
+                    <TextView
+                        android:id="@+id/fechafalla"
+                        android:text="2018/05/09"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                       android:text="Este es un comentario de reclamo."
+                        android:gravity="left|top"
+                        android:inputType="textMultiLine"
+                        android:layout_width="180dp"
+                        android:layout_height="60dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Lista de antecedentes:"/>
+
+            <ListView
+                android:layout_gravity="center"
+                android:id="@+id/listaAntecedentes"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </ListView>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>
+
+</LinearLayout>

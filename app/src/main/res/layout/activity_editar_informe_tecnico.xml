@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.movil.summmit.motorresapp.EditarInformeTecnicoActivity">
+
+    <ScrollView
+        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:padding="3dp"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content" >
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Empresa"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpEmpresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spnEmpresa"
+                            android:layout_width="151dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sucursal"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpSucursal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spnSucursal"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Area" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/spnArea"
+                            android:layout_width="151dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border"
+
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpOt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/edtNroOT"
+                            android:hint="N° OT"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="154dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Marca" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpMarca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/spnMarca"
+                            android:layout_width="151dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modelo"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpModelo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spnModelo"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cliente"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpCliente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_width="43dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+                        <Spinner
+                            android:id="@+id/spnCliente"
+                            android:layout_width="320dp"
+                            android:layout_height="wrap_content"></Spinner>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="321dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="99dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="VIN" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpVin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/spnVin"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpKm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edtKm"
+                            android:layout_width="77dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Km"
+                            android:inputType="numberDecimal"></EditText>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/border"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpHorometro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edtHorometro"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Horometro"
+                            android:inputType="numberDecimal"></EditText>
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Componente"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpComponente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spnComponente"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/border"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpSerie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/edtSerie"
+                            android:hint="Serie"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"></EditText>
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aplicacion"/>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpAplicacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spnAplicacion"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha inicio garantia"/>
+                    <EditText
+                        android:id="@+id/edtFechIniGarantia"
+                        android:enabled="false"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpFechafalla"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:hint="Fecha Falla"
+                            android:id="@+id/edtFechafalla"
+                            android:layout_width="180dp"
+                            android:editable="false"
+                            android:layout_height="wrap_content" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpReclamo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edtReclamo"
+                            android:layout_width="180dp"
+                            android:layout_height="81dp"
+                            android:gravity="left|top"
+                            android:hint="Reclamo cliente.."
+                            android:inputType="textMultiLine" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addAntecedente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Agregar Antecedente" />
+
+            <ListView
+                android:layout_gravity="center"
+                android:id="@+id/listaAntecedentes"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </ListView>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
