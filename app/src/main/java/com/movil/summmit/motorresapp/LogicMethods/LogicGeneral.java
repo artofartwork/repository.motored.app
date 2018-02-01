@@ -52,6 +52,7 @@ public class LogicGeneral {
                 public void onFailure(Call<ReturnValue> call, Throwable t) {
 
                     Log.e("Upload error:", t.getMessage());
+                    Log.d("Upload logic egenral:", t.getMessage());
                 }
             });
 
@@ -80,14 +81,14 @@ public class LogicGeneral {
                 @Override
                 public void onResponse(Call<ReturnValue> call, Response<ReturnValue> response) {
 
-                    Log.v("Upload", "success");
-
+                    Log.d("Upload", "success");
                 }
 
                 @Override
                 public void onFailure(Call<ReturnValue> call, Throwable t) {
 
-                    Log.e("Upload error:", t.getMessage());
+                    Log.d("Upload error:", t.getMessage());
+
                 }
             });
 
