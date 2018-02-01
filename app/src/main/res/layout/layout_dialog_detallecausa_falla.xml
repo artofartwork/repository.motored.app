@@ -5,11 +5,12 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/fondoMotored"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical"
-        android:background="@drawable/border"
+       
         android:layout_gravity="center"
         android:layout_width="330dp"
         android:layout_height="wrap_content">
@@ -20,6 +21,7 @@
             android:layout_height="wrap_content"
             android:text="Tecnicos:"/>
         <Spinner
+            style="@style/spinner_style"
             android:entries="@array/opciones_arrays"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Spinner>
@@ -35,7 +37,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:background="@drawable/border"
+           
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -46,6 +48,7 @@
             android:text="Sistema Falla:"/>
 
         <Spinner
+            style="@style/spinner_style"
             android:entries="@array/opciones_arrays"
             android:layout_width="130dp"
             android:layout_height="wrap_content"></Spinner>
@@ -54,7 +57,7 @@
 
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+           
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -65,6 +68,7 @@
                 android:text="Modo Falla:"/>
 
             <Spinner
+                style="@style/spinner_style"
                 android:entries="@array/opciones_arrays"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"></Spinner>
@@ -77,15 +81,15 @@
 
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+           
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="44dp"
                 android:layout_height="wrap_content"
-                android:text="Nro. Caso:"/>
+                android:text="Nro. Caso:" />
 
             <EditText
                 android:layout_width="130dp"
@@ -108,6 +112,7 @@
         android:layout_height="wrap_content">
 
         <CheckBox
+            style="@style/text_style"
             android:text="Uso Scanner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -117,6 +122,7 @@
             android:layout_height="1dp"/>
 
         <EditText
+            style="@style/text_style"
             android:layout_marginLeft="5dp"
             android:hint="Seleccione file.."
             android:layout_width="170dp"
@@ -131,6 +137,7 @@
         android:layout_height="wrap_content">
 
         <CheckBox
+            style="@style/text_style"
             android:text="Muestra aceite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -139,6 +146,7 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
         <EditText
+            style="@style/text_style"
             android:layout_marginLeft="5dp"
             android:hint="Seleccione file.."
             android:layout_width="170dp"
@@ -153,6 +161,7 @@
         android:layout_height="wrap_content">
 
         <CheckBox
+            style="@style/text_style"
             android:text="Muestra Combustible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -162,6 +171,7 @@
             android:layout_weight="1" />
 
         <EditText
+            style="@style/text_style"
             android:layout_marginLeft="5dp"
             android:hint="Seleccione file.."
             android:layout_width="170dp"
@@ -199,8 +209,15 @@
                         android:layout_height="wrap_content">
                         <Button
                             android:text="Agregar"
+                            android:background="@drawable/button_motored"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="1dp"/>
                         <EditText
                             android:layout_marginLeft="4dp"
                             android:background="@drawable/border_edittext"
@@ -209,6 +226,7 @@
                             android:inputType="textMultiLine"/>
                     </LinearLayout>
                     <ListView
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 

@@ -6,7 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.movil.summmit.motorresapp.AdjuntosActivity">
+    android:background="@color/fondoMotored"
+    tools:context="com.movil.summmit.motorresapp.AdjuntosActivity"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    >
 
     <LinearLayout
         android:orientation="horizontal"
@@ -19,24 +23,29 @@
             android:layout_height="10dp"/>
 
      <TextView
+         style="@style/text_style"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:textSize="17dp"
          android:text="Adjuntar VIN"/>
+
         <View
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="10dp"/>
+            android:layout_height="10dp"
+            android:layout_weight="1" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tmpVin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_edittext">
             <EditText
+                android:backgroundTint="@color/noUnderline"
                 android:id="@+id/edtVin"
                 android:textSize="10sp"
                 android:layout_marginLeft="5dp"
                 android:hint="Seleccione file.."
+                android:editable="false"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
@@ -58,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17dp"
+            style="@style/text_style"
             android:text="Adjuntar Km/Horas"/>
         <View
             android:layout_width="wrap_content"
@@ -67,9 +77,12 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/tmpKmHoras"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_edittext">
 
             <EditText
+                android:backgroundTint="@color/noUnderline"
+                android:editable="false"
                 android:id="@+id/edtKmHoras"
                 android:textSize="10sp"
                 android:layout_marginLeft="5dp"
@@ -86,6 +99,9 @@
 
 
     <Button
+        android:background="@drawable/button_motored"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         android:onClick="agregaFiles"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"

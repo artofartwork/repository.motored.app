@@ -10,6 +10,8 @@
     android:background="?android:attr/selectableItemBackground">
 
     <LinearLayout
+        android:background="@drawable/button_motored"
+        android:textColor="#ffffff"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +23,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="#ffffff"
                 android:id="@+id/sistemafalla"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -29,6 +32,7 @@
                 tools:text="SIST FALLA"/>
 
             <TextView
+                android:textColor="#ffffff"
                 android:id="@+id/nrocaso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,6 +47,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="#ffffff"
                 android:id="@+id/modofalla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,6 +62,7 @@
 
 
             <CheckBox
+                android:textColor="#ffffff"
                 android:enabled="false"
                 android:id="@+id/scanner"
                 android:layout_width="wrap_content"
@@ -64,17 +70,20 @@
                 android:text="Scanner"/>
 
             <CheckBox
+                android:textColor="#ffffff"
                 android:enabled="false"
                 android:id="@+id/muestraceite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Muest. Aceite"/>
+
             <CheckBox
-                android:enabled="false"
                 android:id="@+id/muestracombustible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Muest. Combustib"/>
+                android:enabled="false"
+                android:text="Muest. Combustib"
+                android:textColor="#ffffff" />
 
 
 

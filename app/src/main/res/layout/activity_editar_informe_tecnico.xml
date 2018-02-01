@@ -1,72 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.movil.summmit.motorresapp.EditarInformeTecnicoActivity">
+    android:background="@color/fondoMotored"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context="com.movil.summmit.motorresapp.NuevoInformeActivity">
 
     <ScrollView
-        android:padding="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="4dp">
 
 
         <LinearLayout
-            android:gravity="center"
-            android:padding="3dp"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
-            android:layout_height="wrap_content" >
+            android:padding="3dp">
+
             <LinearLayout
-                android:padding="5dp"
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <LinearLayout
-                    android:background="@drawable/border"
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
+
+                    android:layout_width="174dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
+
                     <TextView
+                        style="@style/text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Empresa"/>
+                        android:text="Empresa" />
+
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpEmpresa"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-5dp">
+
                         <Spinner
                             android:id="@+id/spnEmpresa"
-                            android:layout_width="151dp"
-                            android:layout_height="wrap_content"></Spinner>
+                            style="@style/spinner_style"
+                            android:layout_width="156dp"
+                            android:layout_height="match_parent"></Spinner>
+                        style="@style/spinner_style">
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
 
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+
+                    android:orientation="vertical">
+
                     <TextView
+                        style="@style/text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sucursal"/>
+                        android:text="Sucursal" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpSucursal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-3dp"
+                        >
+
                         <Spinner
                             android:id="@+id/spnSucursal"
-                            android:layout_width="180dp"
+                            style="@style/spinner_style"
+                            android:layout_width="134dp"
                             android:layout_height="wrap_content"></Spinner>
                     </android.support.design.widget.TextInputLayout>
 
@@ -77,20 +96,20 @@
 
             <LinearLayout
 
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <LinearLayout
-                    android:layout_width="151dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
+                        style="@style/text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Area" />
@@ -98,165 +117,193 @@
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpArea"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-6dp">
 
                         <Spinner
                             android:id="@+id/spnArea"
-                            android:layout_width="151dp"
-                            android:layout_height="wrap_content"></Spinner>
+                            style="@style/spinner_style"
+                            android:layout_width="163dp"
+                            android:layout_height="match_parent"></Spinner>
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/border"
 
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/tmpOt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <EditText
-                            android:id="@+id/edtNroOT"
-                            android:hint="N° OT"
-                            android:layout_width="180dp"
-                            android:layout_height="wrap_content" />
-                    </android.support.design.widget.TextInputLayout>
 
-                </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:layout_width="154dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Marca" />
-
                     <android.support.design.widget.TextInputLayout
-                        android:id="@+id/tmpMarca"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <Spinner
-                            android:id="@+id/spnMarca"
-                            android:layout_width="151dp"
-                            android:layout_height="wrap_content"></Spinner>
-                    </android.support.design.widget.TextInputLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tmpOt"
+                        android:layout_width="142dp"
                         android:layout_height="wrap_content"
-                        android:text="Modelo"/>
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/tmpModelo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <Spinner
-                            android:id="@+id/spnModelo"
-                            android:layout_width="180dp"
-                            android:layout_height="wrap_content"></Spinner>
+                        >
+
+                        <EditText
+
+                            android:id="@+id/edtNroOT"
+                            android:layout_width="130dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/border_edittext"
+                            android:hint="N° OT" />
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-
-
-
-
             <LinearLayout
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:layout_marginLeft="12dp"
-                    android:background="@drawable/border"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cliente"/>
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/tmpCliente"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <View
-                            android:layout_width="43dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="1" />
-                        <Spinner
-                            android:id="@+id/spnCliente"
-                            android:layout_width="320dp"
-                            android:layout_height="wrap_content"></Spinner>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="321dp"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="5dp">
 
                 <LinearLayout
-                    android:layout_width="99dp"
+                    android:layout_width="181dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
+
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
+                        style="@style/text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Marca" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpMarca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-5dp">
+
+                        <Spinner
+                            android:id="@+id/spnMarca"
+                            style="@style/spinner_style"
+                            android:layout_width="163dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Modelo" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpModelo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-5dp">
+
+                        <Spinner
+
+                            android:id="@+id/spnModelo"
+                            style="@style/spinner_style"
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"></Spinner>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="375dp"
+                android:layout_height="84dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <View
+                    android:layout_width="43dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="422dp"
+                    android:layout_height="125dp"
+                    android:layout_marginLeft="-6dp"
+
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        style="@style/text_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cliente" />
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tmpCliente"
+                        android:layout_width="346dp"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+
+                            android:id="@+id/spnCliente"
+                            style="@style/spinner_style"
+                            android:layout_width="329dp"
+                            android:layout_height="wrap_content"></Spinner>
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="87dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="126dp"
+                    android:layout_height="82dp"
+
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="VIN" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpVin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-5dp">
 
                         <Spinner
                             android:id="@+id/spnVin"
-                            android:layout_width="90dp"
-                            android:layout_height="wrap_content"></Spinner>
+                            style="@style/spinner_style"
+                            android:layout_width="113dp"
+                            android:layout_height="40dp"></Spinner>
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
@@ -265,18 +312,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:background="@drawable/border"
+
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpKm"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_edittext">
 
                         <EditText
+                            android:backgroundTint="@color/noUnderline"
                             android:id="@+id/edtKm"
-                            android:layout_width="77dp"
+                            android:layout_width="87dp"
                             android:layout_height="wrap_content"
                             android:hint="Km"
                             android:inputType="numberDecimal"></EditText>
@@ -289,18 +338,20 @@
                     android:layout_height="wrap_content"
 
                     android:layout_marginLeft="5dp"
-                    android:background="@drawable/border"
+
                     android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpHorometro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="101dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_edittext">
 
                         <EditText
                             android:id="@+id/edtHorometro"
-                            android:layout_width="110dp"
+                            android:layout_width="101dp"
                             android:layout_height="wrap_content"
+                            android:backgroundTint="@color/noUnderline"
                             android:hint="Horometro"
                             android:inputType="numberDecimal"></EditText>
                     </android.support.design.widget.TextInputLayout>
@@ -312,49 +363,58 @@
 
 
             <LinearLayout
-                android:padding="5dp"
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <LinearLayout
-                    android:background="@drawable/border"
+                    android:layout_marginLeft="-5dp"
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
+
                     <TextView
+                        style="@style/text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Componente"/>
+                        android:text="Componente" />
+
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpComponente"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="165dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-5dp">
+
                         <Spinner
                             android:id="@+id/spnComponente"
-                            android:layout_width="180dp"
+                            style="@style/spinner_style"
+                            android:layout_width="149dp"
                             android:layout_height="wrap_content"></Spinner>
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_marginLeft="3dp"
-                    android:background="@drawable/border"
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/border_edittext"
+                    android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpSerie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
                         <EditText
+                            android:backgroundTint="@color/noUnderline"
                             android:id="@+id/edtSerie"
-                            android:hint="Serie"
                             android:layout_width="170dp"
-                            android:layout_height="wrap_content"></EditText>
+                            android:layout_height="wrap_content"
+                            android:hint="Serie"></EditText>
                     </android.support.design.widget.TextInputLayout>
 
 
@@ -363,93 +423,114 @@
             </LinearLayout>
 
             <LinearLayout
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
                 <LinearLayout
-                    android:background="@drawable/border"
+
+                    android:layout_width="164dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-5dp"
                     android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
+
                     <TextView
+                        style="@style/text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Aplicacion"/>
+                        android:text="Aplicacion" />
 
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpAplicacion"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp">
+
                         <Spinner
                             android:id="@+id/spnAplicacion"
-                            android:layout_width="180dp"
+                            style="@style/spinner_style"
+                            android:layout_width="148dp"
                             android:layout_height="wrap_content"></Spinner>
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
+                    android:layout_width="182dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/text_style"
+                        android:layout_width="145dp"
                         android:layout_height="wrap_content"
-                        android:text="Fecha inicio garantia"/>
+                        android:layout_marginLeft="35dp"
+                        android:text="Fecha inicio garantia" />
+
                     <EditText
                         android:id="@+id/edtFechIniGarantia"
-                        android:enabled="false"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        />
+                        android:layout_width="135dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="35dp"
+                        android:background="@drawable/border_edittext"
+                        android:enabled="false" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <LinearLayout
-                    android:background="@drawable/border"
-                    android:gravity="center"
+
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/noUnderline"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpFechafalla"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <EditText
-                            android:hint="Fecha Falla"
                             android:id="@+id/edtFechafalla"
-                            android:layout_width="180dp"
+                            android:layout_width="148dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/border_edittext"
                             android:editable="false"
-                            android:layout_height="wrap_content" />
+                            android:hint="Fecha Falla" />
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/tmpReclamo"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_edittext"
+                        android:layout_marginLeft="35dp">
 
                         <EditText
+                            android:backgroundTint="@color/noUnderline"
                             android:id="@+id/edtReclamo"
-                            android:layout_width="180dp"
-                            android:layout_height="81dp"
+                            android:layout_width="172dp"
+                            android:layout_height="70dp"
                             android:gravity="left|top"
                             android:hint="Reclamo cliente.."
                             android:inputType="textMultiLine" />
@@ -465,13 +546,17 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:text="Agregar Antecedente" />
+                android:background="@drawable/button_motored"
+                android:text="Agregar Antecedente"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
 
             <ListView
-                android:layout_gravity="center"
+
                 android:id="@+id/listaAntecedentes"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="200dp"
+                android:layout_gravity="center">
 
             </ListView>
 
@@ -479,5 +564,6 @@
 
 
     </ScrollView>
+
 
 </LinearLayout>

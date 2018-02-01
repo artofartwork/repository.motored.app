@@ -2,5 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#312e2e</color>
+    <color name="colorMotoredTop">#312e2e</color>
+    <color name="colorMotoredSpinner">#dc0909</color>
+    <color name="fondoMotored">#6d6a69</color>
+    <color name="noUnderline">#00000000</color>
+    <color name="colorTexto">#ffffffff</color>
 </resources>

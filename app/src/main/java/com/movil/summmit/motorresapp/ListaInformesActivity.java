@@ -85,6 +85,7 @@ public class ListaInformesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Spinner spnEmpresa, spnSucursal, spnArea, spnMarca, spnModelo;
     Button btnBuscar;
+    PreferencesHelper preferencesHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -242,6 +243,7 @@ public class ListaInformesActivity extends AppCompatActivity {
 
         setTitle("Lista de Informes");
         getMenuInflater().inflate(R.menu.menu_lista, menu);
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
          super.onCreateOptionsMenu(menu);
          return true;
     }
@@ -263,6 +265,16 @@ public class ListaInformesActivity extends AppCompatActivity {
 
                 sincronizarDatos();
 
+
+                break;
+
+            case R.id.action_signout:
+
+
+                preferencesHelper.signOut(this);
+                Intent intent = new Intent(ListaInformesActivity.this, LoginActivity.class);
+                ListaInformesActivity.this.startActivity(intent);
+                finish();
 
                 break;
 

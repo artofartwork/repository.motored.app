@@ -244,6 +244,34 @@ public class DetalleCausaAnalisisFallaActivity extends AppCompatActivity impleme
                 openFileExplorer();
             }
         });
+        edtFileScanner.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                inputFileSelected = 1;
+                if (hasFocus) {
+                    openFileExplorer();
+                }
+            }
+        });
+        edtFileMuestAceite.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    inputFileSelected = 2;
+                    openFileExplorer();
+                }
+            }
+        });
+
+        edtFileMuestCombus.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    inputFileSelected = 3;
+                    openFileExplorer();
+                }
+            }
+        });
+
+
+
 
         edtDiagnostico = (EditText)findViewById(R.id.edtDiagnostico);
         edtCausaFalla = (EditText)findViewById(R.id.edtCausaFalla);
@@ -330,6 +358,13 @@ public class DetalleCausaAnalisisFallaActivity extends AppCompatActivity impleme
             @Override
             public void onClick(View v) {
                 mostrarListaTecnicos();
+            }
+        });
+        edtTecnicos.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mostrarListaTecnicos();
+                }
             }
         });
     }

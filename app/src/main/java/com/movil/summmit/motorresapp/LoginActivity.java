@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.movil.summmit.motorresapp.LogicMethods.LogicMaestro;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Empresa;
@@ -47,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         isStoragePermissionGranted();
 
         init();
-       // showLoading();
+        // showLoading();
     }
 
     public void init(){
@@ -78,14 +80,14 @@ public class LoginActivity extends AppCompatActivity {
                 onMessageError();
             }
 
-           // hideLoading();
+            // hideLoading();
 
         }
 
 
 
 
-       //
+        //
     }
     private void saveSession(Usuario obj) {
 
@@ -125,10 +127,8 @@ public class LoginActivity extends AppCompatActivity {
     public  boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23)
         {
-            if ( checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_GRANTED
-                    && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_GRANTED
-                    && checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE ) == PackageManager.PERMISSION_GRANTED
-                    &&  checkSelfPermission(Manifest.permission.INTERNET ) == PackageManager.PERMISSION_GRANTED)
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED )
             {
                 return true;
             }
@@ -181,10 +181,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void sincronizarDatos(){
 
+
+
         showLoading();
 
-        LogicMaestro logicMaestro = new LogicMaestro(this);
 
+        LogicMaestro logicMaestro = new LogicMaestro(this);
+        logicMaestro.getProgressDialog(flayLoading);
         logicMaestro.SyncEmpresa();
         logicMaestro.SyncCasoTecnico();
         logicMaestro.SyncCliente();
@@ -195,12 +198,6 @@ public class LoginActivity extends AppCompatActivity {
         logicMaestro.SyncModelo();
         logicMaestro.SyncVin();
         logicMaestro.SyncUsuario();
-
-
-        hideLoading();
-
-        onMessageExitoSync();
-
     }
     public int onMessageExitoSync() {
         Snackbar snackbar = Snackbar

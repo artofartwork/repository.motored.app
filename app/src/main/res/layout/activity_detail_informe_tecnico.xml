@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondoMotored"
     tools:context="com.movil.summmit.motorresapp.DetailInformeTecnicoActivity">
 
     <LinearLayout
@@ -15,20 +16,24 @@
         android:gravity="center">
 
         <LinearLayout
-            android:background="@drawable/border"
+
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Empresa"/>
 
             <TextView
+
                 android:id="@+id/txvEmpresa"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content">
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"
+                >
 
             </TextView>
 
@@ -36,22 +41,26 @@
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
 
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sucursal"/>
 
 
             <TextView
+
                 android:id="@+id/txvSucursal"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content">
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"
+                >
 
             </TextView>
 
@@ -69,12 +78,13 @@
         android:gravity="center">
 
         <LinearLayout
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Area"/>
@@ -83,25 +93,28 @@
             <TextView
                 android:id="@+id/txvArea"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="N° OT"/>
             <TextView
                 android:id="@+id/txvNroOT"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext" />
 
 
         </LinearLayout>
@@ -116,12 +129,13 @@
         android:gravity="center">
 
         <LinearLayout
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Marca"/>
@@ -129,18 +143,20 @@
             <TextView
                 android:id="@+id/txvMarca"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Modelo"/>
@@ -148,7 +164,8 @@
             <TextView
                 android:id="@+id/txvModelo"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
@@ -163,12 +180,13 @@
         android:gravity="center">
 
         <LinearLayout
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cliente"/>
@@ -176,18 +194,20 @@
             <TextView
                 android:id="@+id/txvCliente"
                 android:layout_width="240dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="VIN"/>
@@ -195,7 +215,8 @@
             <TextView
                 android:id="@+id/txvVin"
                 android:layout_width="120dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
@@ -210,12 +231,13 @@
         android:gravity="center">
 
         <LinearLayout
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="KM"/>
@@ -223,18 +245,20 @@
             <TextView
                 android:id="@+id/txvKm"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Horometro"/>
@@ -242,18 +266,20 @@
             <TextView
                 android:id="@+id/txvHorom"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Componente"/>
@@ -261,7 +287,8 @@
             <TextView
                 android:id="@+id/txvComponente"
                 android:layout_width="160dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
@@ -275,12 +302,13 @@
         android:gravity="center">
 
         <LinearLayout
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Serie"/>
@@ -288,18 +316,20 @@
             <TextView
                 android:id="@+id/txvSerie"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Aplicacion"/>
@@ -307,26 +337,30 @@
             <TextView
                 android:id="@+id/txvAplicacion"
                 android:layout_width="160dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="5dp"
-            android:background="@drawable/border"
+
             android:gravity="center"
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                style="@style/text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fecha Garantia"/>
 
             <TextView
+
                 android:id="@+id/txvFechaGarantia"
                 android:layout_width="120dp"
-                android:layout_height="wrap_content"></TextView>
+                android:layout_height="30dp"
+                android:background="@drawable/border_edittext"></TextView>
 
 
         </LinearLayout>
@@ -346,7 +380,7 @@
             android:gravity="center">
 
             <LinearLayout
-                android:background="@drawable/border"
+
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
@@ -354,13 +388,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/text_style"
                     android:text="Fecha Falla"/>
 
 
                 <TextView
+
                     android:id="@+id/txvFechaFalla"
                     android:layout_width="160dp"
-                    android:layout_height="wrap_content"></TextView>
+                    android:layout_height="30dp"
+                    android:background="@drawable/border_edittext"></TextView>
 
 
             </LinearLayout>
@@ -376,7 +413,7 @@
         android:gravity="center">
 
         <LinearLayout
-            android:background="@drawable/border"
+
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
@@ -384,12 +421,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/text_style"
                 android:text="Reclamo del cliente"/>
 
             <TextView
                 android:id="@+id/txvReclamo"
                 android:inputType="textMultiLine"
                 android:gravity="left|top"
+                android:background="@drawable/border_edittext"
                 android:layout_width="370dp"
                 android:layout_height="40dp">
 
