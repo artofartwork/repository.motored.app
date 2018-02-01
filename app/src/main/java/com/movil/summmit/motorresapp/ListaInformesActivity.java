@@ -299,7 +299,7 @@ public class ListaInformesActivity extends AppCompatActivity {
 
         try
         {
-            showLoading();
+            //showLoading();
             LogicMaestro logicMaestro = new LogicMaestro(this, this.listener,flayLoading);
             logicMaestro.SyncEmpresa();
             logicMaestro.SyncCasoTecnico();
@@ -312,8 +312,8 @@ public class ListaInformesActivity extends AppCompatActivity {
             logicMaestro.SyncVin();
             logicMaestro.SyncUsuario();
 
-            hideLoading();
-            onMessageExitoSync();
+           // hideLoading();
+           //onMessageExitoSync();
 
 
         }catch (Exception e)
