@@ -36,4 +36,15 @@ public class HelpMaestro {
         return 35;
     }
 
+    public static final String MAESTRO_CASOTECNICO = "CasoTecnico";
+    public static final String MAESTRO_CLIENTE = "Cliente";
+    public static final String MAESTRO_EMPLEADO = "Empleado";
+    public static final String MAESTRO_EMPRESA = "Empresa";
+    public static final String MAESTRO_MAESTRA = "Maestra";
+    public static final String MAESTRO_MAESTRAARGU = "MaestraArgu";
+    public static final String MAESTRO_MARCA = "Marca";
+    public static final String MAESTRO_MODELO = "Modelo";
+    public static final String MAESTRO_USUARIO = "Usuario";
+    public static final String MAESTRO_VIN = "Vin";
+
 }

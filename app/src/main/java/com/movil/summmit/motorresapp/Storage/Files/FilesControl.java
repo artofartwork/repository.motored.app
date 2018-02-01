@@ -74,17 +74,24 @@ public class FilesControl {
         return file;
     }
 
+    public File getpruebauno() {
+        // Get the directory for the user's public pictures directory.
+
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/CARPETA_MOTORRED"), "INFORME_1/sisale.txt");
+        return file;
+    }
+
     public File getpruebados() {
         // Get the directory for the user's public pictures directory.
 
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/CARPETA_MOTORRED"), "INFORME_8/anual.pdf");
-       /* if (!file.exists())
-        {
-            if (!file.mkdirs()) {
-                Log.d("LOG_FILE", "Directory not created");
-            }
-        }*/
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/CARPETA_MOTORRED"), "INFORME_1/otromas.txt");
+        return file;
+    }
 
+    public File getpruebatres() {
+        // Get the directory for the user's public pictures directory.
+
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/CARPETA_MOTORRED"), "INFORME_1/otrofile.txt");
         return file;
     }
 

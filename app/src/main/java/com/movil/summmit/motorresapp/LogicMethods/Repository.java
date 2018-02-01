@@ -21,6 +21,8 @@ import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.Emp
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.MaestraArguRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.MarcaRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.ModeloRepository;
+import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.SyncMaestroRepository;
+import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.UsuarioRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.VinRepository;
 
 /**
@@ -51,11 +53,25 @@ public class Repository {
     private InformeTecnicoRecomendacionesRepository informeTecnicoRecomendacionesRepository;
     private InformeTecnicoAdjuntosRepository informeTecnicoAdjuntosRepository;
 
+    private UsuarioRepository usuarioRepository;
+
+    private SyncMaestroRepository syncMaestroRepository;
+
     private Context ctx;
 
     public Repository(Context ctx)
     {
         this.ctx = ctx;
+    }
+
+    public SyncMaestroRepository syncMaestroRepository()
+    {
+        return syncMaestroRepository = new SyncMaestroRepository(ctx);
+    }
+
+    public UsuarioRepository usuarioRepository()
+    {
+        return usuarioRepository = new UsuarioRepository(ctx);
     }
 
     public InformeTecnicoRepository informeTecnicoRepository()

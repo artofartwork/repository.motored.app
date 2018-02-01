@@ -1,6 +1,16 @@
 package com.movil.summmit.motorresapp.Request;
 
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnico;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntos;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntosDetalle;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAntecedente;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoConclusiones;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFalla;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaCausa;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaCorrectivos;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaDiagnostico;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaxEmpleado;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoRecomendaciones;
 
 import java.util.List;
 
@@ -50,8 +60,17 @@ public class ApiClienteInformes {
                 "Content-Type: application/json"
         })
          @POST("/InformeTecnico/subirdata")
-         Call<ReturnValue> synInformes(@Body InformeTecnico objeto); //este funciona para subir data
-
+         Call<ReturnValue> sycInformeTecnico(@Body InformeTecnico informeTecnico,
+                                             @Body List<InformeTecnicoAntecedente> informeTecnicoAntecedentes,
+                                             @Body List<InformeTecnicoFalla> informeTecnicoFallas,
+                                             @Body List<InformeTecnicoFallaxEmpleado> informeTecnicoFallaxEmpleados,
+                                             @Body List<InformeTecnicoFallaDiagnostico> informeTecnicoFallaDiagnosticos,
+                                             @Body List<InformeTecnicoFallaCausa> informeTecnicoFallaCausas,
+                                             @Body List<InformeTecnicoFallaCorrectivos> informeTecnicoFallaCorrectivos,
+                                             @Body List<InformeTecnicoConclusiones> informeTecnicoConclusiones,
+                                             @Body List<InformeTecnicoRecomendaciones> informeTecnicoRecomendaciones,
+                                             @Body InformeTecnicoAdjuntos informeTecnicoAdjuntos,
+                                             @Body List<InformeTecnicoAdjuntosDetalle> informeTecnicoAdjuntosDetalles); //este funciona para subir data
 
         //este es para subir dta y archivos
         @Multipart

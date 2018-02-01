@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.movil.summmit.motorresapp.Listeners.OnRequestListener;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.CasoTecnico;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Cliente;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Empleado;
@@ -20,6 +21,7 @@ import com.movil.summmit.motorresapp.Models.Enity.Maestro.Maestra;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.MaestraArgu;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Marca;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Modelo;
+import com.movil.summmit.motorresapp.Models.Enity.Maestro.SyncMaestro;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Usuario;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Vin;
 import com.movil.summmit.motorresapp.R;
@@ -32,6 +34,7 @@ import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.Mae
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.MaestraRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.MarcaRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.ModeloRepository;
+import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.SyncMaestroRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.UsuarioRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.VinRepository;
 
@@ -65,17 +68,20 @@ public class LogicMaestro {
     ModeloRepository modeloRepository;
     UsuarioRepository usuarioRepository;
     VinRepository vinRepository;
+    private OnRequestListener listener;
     View progressDialog = null;
     int cont = 0;
+
     public LogicMaestro(Context ctx)
     {
         this.ctx = ctx;
+       // getApplicationContext();
+        //this.listener =listener;
     }
 
     public void getProgressDialog(View pDialog){
         progressDialog = pDialog;
     }
-
 
     public int onMessageExitoSync() {
 
@@ -104,13 +110,13 @@ public class LogicMaestro {
         return  1;
     }
 
-
     public int SyncEmpresa()  // 1 es exito, 0 es fallado
     {
 
 
 
         empresaRepository = new EmpresaRepository(ctx);
+
         try {
             Call<List<Empresa>> call= ApiClienteMaestros.getMyApiClient().listaEmpresa();
             call.enqueue(new Callback<List<Empresa>>() {
@@ -152,6 +158,7 @@ public class LogicMaestro {
 
     }
 
+    
     public int SyncCasoTecnico()
     {
         progressDialog.setVisibility(View.VISIBLE);
@@ -409,7 +416,7 @@ public class LogicMaestro {
     }
     public int SyncModelo()
     {
-
+        progressDialog.setVisibility(View.VISIBLE);
 
         modeloRepository = new ModeloRepository(ctx);
 
@@ -450,9 +457,7 @@ public class LogicMaestro {
 
     public int SyncUsuario()
     {
-
-
-
+        progressDialog.setVisibility(View.VISIBLE);
         usuarioRepository = new UsuarioRepository(ctx);
 
         try {

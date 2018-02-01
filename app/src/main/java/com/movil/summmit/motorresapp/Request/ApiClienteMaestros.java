@@ -7,6 +7,7 @@ import com.movil.summmit.motorresapp.Models.Enity.Maestro.Maestra;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.MaestraArgu;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Marca;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Modelo;
+import com.movil.summmit.motorresapp.Models.Enity.Maestro.SyncMaestro;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Usuario;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Vin;
 
@@ -82,6 +83,9 @@ public class ApiClienteMaestros {
 
         @GET("/Maestro/listaVin")
         Call< List<Vin> > listaVin();
+
+        @GET("/Maestro/listaSyncMaestro")
+        Call< List<SyncMaestro> > listaSyncMaestro();
 
       //  @POST("/api/login")
        // Call<LogInResponse> login(@Body LogInRaw raw);

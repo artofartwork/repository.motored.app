@@ -29,8 +29,14 @@ import com.movil.summmit.motorresapp.LogicMethods.LogicMaestro;
 import com.movil.summmit.motorresapp.LogicMethods.Repository;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnico;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntos;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntosDetalle;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAntecedente;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoConclusiones;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFalla;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaCausa;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaCorrectivos;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaDiagnostico;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFallaxEmpleado;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoRecomendaciones;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.CasoTecnico;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Empleado;
@@ -364,7 +370,14 @@ public class ListaInformesActivity extends AppCompatActivity {
             objInforme.setInformeTecnicoAdjuntos(objAdjuntos);
 
             FilesControl filesControl = new FilesControl();
-            File scanner = filesControl.getpruebados();
+            File unofile = filesControl.getpruebauno();
+            File dosfile = filesControl.getpruebados();
+            File tresfile = filesControl.getpruebatres();
+
+            List<File> filesss = new ArrayList<>();
+            filesss.add(unofile);
+            filesss.add(dosfile);
+            filesss.add(tresfile);
 
             LogicGeneral logicGeneral = new LogicGeneral();
 
@@ -372,7 +385,10 @@ public class ListaInformesActivity extends AppCompatActivity {
 
             String datos = gson.toJson(objInforme).toString();
 
-            Uri fileUri = Uri.fromFile(scanner);
+            logicGeneral.syncmultifiles(datos, filesss);
+
+
+           /* Uri fileUri = Uri.fromFile(scanner);
 
             RequestBody requestFile =
                     RequestBody.create(
@@ -399,7 +415,7 @@ public class ListaInformesActivity extends AppCompatActivity {
                 public void onFailure(Call<ReturnValue> call, Throwable t) {
                     Log.e("Upload error:", t.getMessage());
                 }
-            });
+            });*/
 
 
             //logicGeneral.syncDatainforme(datos, scanner);
@@ -465,6 +481,58 @@ public class ListaInformesActivity extends AppCompatActivity {
         {
             String da = e.getMessage();
         }
+    }
+
+    public Boolean SincronizarInforme(InformeTecnico objInforme)
+    {
+        try
+        {
+            objInforme = repository.informeTecnicoRepository().findEntidad(objInforme.getIdInformeTecnico());
+            List<InformeTecnicoAntecedente> informeTecnicoAntecedentes = repository.informeTecnicoAntecedenteRepository().findAllxInforme(objInforme.getIdInformeTecnico());
+
+            List<InformeTecnicoFalla> informeTecnicoFallas = repository.informeTecnicoFallaRepository().findAllxInforme(objInforme.getIdInformeTecnico());
+
+            List<InformeTecnicoFallaxEmpleado> informeTecnicoFallaxEmpleadosList = new ArrayList<>();
+            List<InformeTecnicoFallaDiagnostico> informeTecnicoFallaDiagnosticosList    = new ArrayList<>();
+            List<InformeTecnicoFallaCausa> informeTecnicoFallaCausasList = new ArrayList<>();
+            List<InformeTecnicoFallaCorrectivos> informeTecnicoFallaCorrectivosList = new ArrayList<>();
+
+            for (InformeTecnicoFalla obj: informeTecnicoFallas )
+            {
+                List<InformeTecnicoFallaxEmpleado> lisFallaxEmp =  repository.informeTecnicoFallaxEmpleadoRepository().findAllxInformeTecnicoFalla(obj.getIdInformeTecnicoFalla());
+                informeTecnicoFallaxEmpleadosList.addAll(lisFallaxEmp);
+
+                List<InformeTecnicoFallaDiagnostico> listaDiagnostico = repository.informeTecnicoFallaDiagnosticoRepository().AllxInformeTecnicoFalla(obj.getIdInformeTecnicoFalla());
+                informeTecnicoFallaDiagnosticosList.addAll(listaDiagnostico);
+
+                List<InformeTecnicoFallaCausa> listaCausa = repository.informeTecnicoFallaCausaRepository().AllxInformeTecnicoFalla(obj.getIdInformeTecnicoFalla());
+                informeTecnicoFallaCausasList.addAll(listaCausa);
+
+                List<InformeTecnicoFallaCorrectivos> listaCorrectivos = repository.informeTecnicoFallaCorrectivosRepository().AllxInformeTecnicoFalla(obj.getIdInformeTecnicoFalla());
+                informeTecnicoFallaCorrectivosList.addAll(listaCorrectivos);
+
+            }
+
+            List<InformeTecnicoConclusiones> informeTecnicoConclusionesList = repository.informeTecnicoConclusionesRepository().findAllxInforme(objInforme.getIdInformeTecnico());
+            List<InformeTecnicoRecomendaciones> informeTecnicoRecomendacionesList = repository.informeTecnicoRecomendacionesRepository().findAllxInforme(objInforme.getIdInformeTecnico());
+
+            InformeTecnicoAdjuntos informeTecnicoAdjuntos = repository.informeTecnicoAdjuntosRepository().findxInforme(objInforme.getIdInformeTecnico());
+
+            List<InformeTecnicoAdjuntosDetalle> informeTecnicoAdjuntosDetalleList = repository.informeTecnicoAdjuntosDetalleRepository().findAllxInforme(objInforme.getIdInformeTecnico());
+
+            LogicGeneral logicGeneral = new LogicGeneral();
+            logicGeneral.syncInformeTecnico(objInforme, informeTecnicoAntecedentes, informeTecnicoFallas, informeTecnicoFallaxEmpleadosList, informeTecnicoFallaDiagnosticosList,
+                                            informeTecnicoFallaCausasList, informeTecnicoFallaCorrectivosList, informeTecnicoConclusionesList, informeTecnicoRecomendacionesList, informeTecnicoAdjuntos,
+                                              informeTecnicoAdjuntosDetalleList);
+
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+
     }
 
 

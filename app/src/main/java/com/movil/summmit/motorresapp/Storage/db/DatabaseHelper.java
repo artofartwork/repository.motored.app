@@ -26,6 +26,7 @@ import com.movil.summmit.motorresapp.Models.Enity.Maestro.Maestra;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.MaestraArgu;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Marca;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Modelo;
+import com.movil.summmit.motorresapp.Models.Enity.Maestro.SyncMaestro;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Usuario;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Vin;
 
@@ -61,6 +62,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Vin,Integer> VinDAO = null;
     private Dao<Usuario,Integer> UsuarioDAO = null;
     private Dao<Marca,Integer> MarcaDAO = null;
+    private Dao<SyncMaestro, Integer> SyncMaestroDAO = null;
 
    // private RuntimeExceptionDao<DatosGenerales, Integer> datosGeneralesRuntimeDao = null;
 
@@ -100,6 +102,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(source, Vin.class);
             TableUtils.createTable(source, Usuario.class);
             TableUtils.createTable(source, Marca.class);
+            TableUtils.createTable(source, SyncMaestro.class);
 
         }
         catch (SQLException ex)
@@ -141,6 +144,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(source, Vin.class, true);
             TableUtils.dropTable(source, Usuario.class, true);
             TableUtils.dropTable(source, Marca.class, true);
+            TableUtils.dropTable(source, SyncMaestro.class, true);
             onCreate(database, source);
 
         } catch (java.sql.SQLException e) {
@@ -183,7 +187,16 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         VinDAO = null;
         UsuarioDAO = null;
         MarcaDAO = null;
+        SyncMaestroDAO = null;
 
+    }
+
+    public Dao<SyncMaestro, Integer> getSyncMaestroDAO() throws java.sql.SQLException {
+
+        if (SyncMaestroDAO == null){
+            SyncMaestroDAO = getDao(SyncMaestro.class);
+        }
+        return SyncMaestroDAO;
     }
 
     public Dao<InformeTecnicoFallaxEmpleado, Integer> getInformeTecnicoFallaxEmpleadoDAO() throws java.sql.SQLException {
