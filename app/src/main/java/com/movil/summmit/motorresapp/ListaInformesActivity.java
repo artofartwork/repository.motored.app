@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.movil.summmit.motorresapp.Adapters.InformeTecnicoAdapter;
+import com.movil.summmit.motorresapp.Listeners.OnRequestListener;
 import com.movil.summmit.motorresapp.LogicMethods.LogicGeneral;
 import com.movil.summmit.motorresapp.LogicMethods.LogicMaestro;
 import com.movil.summmit.motorresapp.LogicMethods.Repository;
@@ -92,6 +93,7 @@ public class ListaInformesActivity extends AppCompatActivity {
     Spinner spnEmpresa, spnSucursal, spnArea, spnMarca, spnModelo;
     Button btnBuscar;
     PreferencesHelper preferencesHelper;
+    private OnRequestListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -298,7 +300,7 @@ public class ListaInformesActivity extends AppCompatActivity {
         try
         {
             showLoading();
-            LogicMaestro logicMaestro = new LogicMaestro(this);
+            LogicMaestro logicMaestro = new LogicMaestro(this, this.listener,flayLoading);
             logicMaestro.SyncEmpresa();
             logicMaestro.SyncCasoTecnico();
             logicMaestro.SyncCliente();

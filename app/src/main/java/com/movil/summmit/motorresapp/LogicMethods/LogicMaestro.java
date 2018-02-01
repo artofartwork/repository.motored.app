@@ -72,15 +72,12 @@ public class LogicMaestro {
     View progressDialog = null;
     int cont = 0;
 
-    public LogicMaestro(Context ctx)
+    public LogicMaestro(Context ctx, OnRequestListener listener,View progressDialog)
     {
         this.ctx = ctx;
+        this.progressDialog = progressDialog;
        // getApplicationContext();
-        //this.listener =listener;
-    }
-
-    public void getProgressDialog(View pDialog){
-        progressDialog = pDialog;
+        this.listener =listener;
     }
 
     public int onMessageExitoSync() {
@@ -88,8 +85,6 @@ public class LogicMaestro {
 
         cont= cont + 1;
         if(cont == 10){
-
-
             Snackbar snackbar = Snackbar
                     .make(progressDialog,"¡SINCRONIZACION EXITOSA!", Snackbar.LENGTH_LONG);
 
@@ -107,6 +102,7 @@ public class LogicMaestro {
                 .make(progressDialog,"¡SINCRONIZACION FALLIDA!", Snackbar.LENGTH_LONG);
 
         snackbar.show();
+        progressDialog.setVisibility(View.GONE);
         return  1;
     }
 
@@ -183,6 +179,8 @@ public class LogicMaestro {
 
 
                         }
+
+                    //    listener.onPrueba("aaaujh");
 
                         onMessageExitoSync();
                     }

@@ -1,10 +1,13 @@
 package com.movil.summmit.motorresapp.LogicMethods;
 
+import android.app.ProgressDialog;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 
 import com.movil.summmit.motorresapp.Listeners.OnRequestListener;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.SyncMaestro;
+import com.movil.summmit.motorresapp.R;
 import com.movil.summmit.motorresapp.Request.ApiClienteMaestros;
 import com.movil.summmit.motorresapp.Storage.db.repository.MaestraRepository.SyncMaestroRepository;
 
@@ -22,15 +25,17 @@ import retrofit2.Response;
 public class LogicSync {
 
    private OnRequestListener listener;
+   public  View pDialog,container;
 
-    public LogicSync(OnRequestListener listener)
+    public LogicSync(OnRequestListener listener,View pDialog)
     {
         this.listener = listener;
+        this.pDialog = pDialog;
     }
 
     public void SyncMaestrosAud()  // 1 es exito, 0 es fallado
     {
-        //progressDialog.setVisibility(View.VISIBLE);
+        pDialog.setVisibility(View.VISIBLE);
 
         try {
 
@@ -52,6 +57,8 @@ public class LogicSync {
                         }
 
                         listener.OnRespuestaSyncMaestros(lista);
+                        listener.onPrueba("dasasdasd");
+                        onMessageExitoSync();
 
                     }
                 }
@@ -59,7 +66,7 @@ public class LogicSync {
                 @Override
                 public void onFailure(Call<List<SyncMaestro>> call, Throwable t) {
                     Log.d("eeror", "asdf");
-                   // onMessageFalloSync();
+                   onMessageFalloSync();
                 }
             });
 
@@ -71,6 +78,21 @@ public class LogicSync {
         }
 
 
+    }
+    public int onMessageExitoSync() {
+        Snackbar snackbar = Snackbar
+                .make(pDialog,"¡SINCRONIZACION EXITOSA!", Snackbar.LENGTH_LONG);
+        pDialog.setVisibility(View.GONE);
+        snackbar.show();
+        return  1;
+    }
 
+    public int onMessageFalloSync() {
+        Snackbar snackbar = Snackbar
+                .make(pDialog,"¡SINCRONIZACION FALLIDA!", Snackbar.LENGTH_LONG);
+
+        snackbar.show();
+        pDialog.setVisibility(View.GONE);
+        return  1;
     }
 }

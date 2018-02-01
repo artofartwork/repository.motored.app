@@ -189,12 +189,20 @@ public class LoginActivity extends AppCompatActivity implements OnRequestListene
 
     public void sincronizarDatos(){
 
-        showLoading();
-        LogicMaestro logicMaestro = new LogicMaestro(this);
-        logicMaestro.getProgressDialog(flayLoading);
-
-        LogicSync logicSync = new LogicSync(this);
-        logicSync.SyncMaestrosAud();
+        //showLoading();
+        LogicMaestro logicMaestro = new LogicMaestro(this,this,flayLoading);
+        logicMaestro.SyncEmpresa();
+        logicMaestro.SyncCasoTecnico();
+        logicMaestro.SyncCliente();
+        logicMaestro.SyncEmpleado();
+        logicMaestro.SyncMaestra();
+        logicMaestro.SyncMaestraArgu();
+        logicMaestro.SyncMarca();
+        logicMaestro.SyncModelo();
+        logicMaestro.SyncVin();
+        logicMaestro.SyncUsuario();
+        //LogicSync logicSync = new LogicSync(this,flayLoading);
+        // logicSync.SyncMaestrosAud();
 
 
     }
@@ -202,9 +210,7 @@ public class LoginActivity extends AppCompatActivity implements OnRequestListene
     @Override
     public void OnRespuestaSyncMaestros(List<SyncMaestro> listaSync) {
 
-        LogicMaestro logicMaestro = new LogicMaestro(this);
-        logicMaestro.getProgressDialog(flayLoading);
-
+        LogicMaestro logicMaestro = new LogicMaestro(this,this,flayLoading);
         List<SyncMaestro> lstalocal = repository.syncMaestroRepository().findAll();
         if (lstalocal.size() == 0)
         {
@@ -264,6 +270,14 @@ public class LoginActivity extends AppCompatActivity implements OnRequestListene
 
         }
     }
+
+    @Override
+    public void onPrueba(String data) {
+
+        String dx = data;
+    }
+
+
 
 
    /* public int onMessageExitoSync() {

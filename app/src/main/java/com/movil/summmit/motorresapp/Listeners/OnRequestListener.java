@@ -11,4 +11,5 @@ import java.util.List;
 public interface OnRequestListener {
 
     void OnRespuestaSyncMaestros(List<SyncMaestro> lista);
+    void onPrueba(String data);
 }
