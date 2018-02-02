@@ -71,27 +71,42 @@ public class LogicMaestro {
     private OnRequestListener listener;
     View progressDialog = null;
     int cont = 0;
+    int tipo = 0;
 
-    public LogicMaestro(Context ctx, OnRequestListener listener,View progressDialog)
+    public LogicMaestro(Context ctx, OnRequestListener listener,View progressDialog, Integer tipo)
     {
         this.ctx = ctx;
         this.progressDialog = progressDialog;
        // getApplicationContext();
         this.listener =listener;
+        this.tipo = tipo;
     }
 
     public int onMessageExitoSync() {
 
 
-        cont= cont + 1;
-        if(cont == 10){
+        if (tipo == 1)
+        {
+            cont= cont + 1;
+            if(cont == 10){
+                Snackbar snackbar = Snackbar
+                        .make(progressDialog,"¡SINCRONIZACION EXITOSA!", Snackbar.LENGTH_LONG);
+
+                snackbar.show();
+                cont = 0;
+                progressDialog.setVisibility(View.GONE);
+
+            }
+
+        }
+        else
+
+        {
             Snackbar snackbar = Snackbar
                     .make(progressDialog,"¡SINCRONIZACION EXITOSA!", Snackbar.LENGTH_LONG);
 
             snackbar.show();
-            cont = 0;
             progressDialog.setVisibility(View.GONE);
-
         }
 
         return  1;
@@ -108,9 +123,6 @@ public class LogicMaestro {
 
     public int SyncEmpresa()  // 1 es exito, 0 es fallado
     {
-
-
-
         empresaRepository = new EmpresaRepository(ctx);
 
         try {
@@ -126,8 +138,6 @@ public class LogicMaestro {
                         for (Empresa obj : listaResponse)
                         {
                             empresaRepository.create(obj);
-
-
 
                         }
 
@@ -154,10 +164,9 @@ public class LogicMaestro {
 
     }
 
-
     public int SyncCasoTecnico()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+//        progressDialog.setVisibility(View.VISIBLE);
 
         casoTecnicoRepository = new CasoTecnicoRepository(ctx);
 
@@ -168,20 +177,13 @@ public class LogicMaestro {
                 public void onResponse(Call<List<CasoTecnico>> call, Response<List<CasoTecnico>> response) {
                     if(response!=null && response.isSuccessful()){
                         List<CasoTecnico> listaResponse = response.body();
-
                         //limpio todo
                         casoTecnicoRepository.deleteAllRows();
 
                         for (CasoTecnico obj : listaResponse)
                         {
-
                             casoTecnicoRepository.create(obj);
-
-
                         }
-
-                    //    listener.onPrueba("aaaujh");
-
                         onMessageExitoSync();
                     }
                 }
@@ -189,7 +191,7 @@ public class LogicMaestro {
                 @Override
                 public void onFailure(Call<List<CasoTecnico>> call, Throwable t) {
                     Log.d("caso.tec.fechfalla", "-> " + t.getMessage());
-                    progressDialog.setVisibility(View.GONE);
+                  //  progressDialog.setVisibility(View.GONE);
                     onMessageFalloSync();
                 }
             });
@@ -207,7 +209,7 @@ public class LogicMaestro {
 
     public int SyncCliente()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+       // progressDialog.setVisibility(View.VISIBLE);
 
         clienteRepository = new ClienteRepository(ctx);
 
@@ -248,7 +250,7 @@ public class LogicMaestro {
 
     public int SyncEmpleado()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+        //progressDialog.setVisibility(View.VISIBLE);
 
         empleadoRepository = new EmpleadoRepository(ctx);
 
@@ -290,7 +292,7 @@ public class LogicMaestro {
 
     public int SyncMaestra()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+      //  progressDialog.setVisibility(View.VISIBLE);
 
         maestraRepository = new MaestraRepository(ctx);
 
@@ -332,7 +334,7 @@ public class LogicMaestro {
     }
     public int SyncMaestraArgu()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+      //  progressDialog.setVisibility(View.VISIBLE);
 
         maestraArguRepository = new MaestraArguRepository(ctx);
 
@@ -374,7 +376,7 @@ public class LogicMaestro {
     public int SyncMarca()
     {
 
-        progressDialog.setVisibility(View.VISIBLE);
+       // progressDialog.setVisibility(View.VISIBLE);
 
         marcaRepository = new MarcaRepository(ctx);
 
@@ -414,7 +416,7 @@ public class LogicMaestro {
     }
     public int SyncModelo()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+        //progressDialog.setVisibility(View.VISIBLE);
 
         modeloRepository = new ModeloRepository(ctx);
 
@@ -455,7 +457,7 @@ public class LogicMaestro {
 
     public int SyncUsuario()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+       // progressDialog.setVisibility(View.VISIBLE);
         usuarioRepository = new UsuarioRepository(ctx);
 
         try {
@@ -494,7 +496,7 @@ public class LogicMaestro {
     }
     public int SyncVin()
     {
-        progressDialog.setVisibility(View.VISIBLE);
+       // progressDialog.setVisibility(View.VISIBLE);
 
         vinRepository = new VinRepository(ctx);
 

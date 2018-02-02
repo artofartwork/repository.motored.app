@@ -1,6 +1,7 @@
 package com.movil.summmit.motorresapp.LogicMethods;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
@@ -26,9 +27,11 @@ public class LogicSync {
 
    private OnRequestListener listener;
    public  View pDialog,container;
+    private Context ctx;
 
-    public LogicSync(OnRequestListener listener,View pDialog)
+    public LogicSync(Context ctx, OnRequestListener listener, View pDialog)
     {
+        this.ctx = ctx;
         this.listener = listener;
         this.pDialog = pDialog;
     }
@@ -57,8 +60,8 @@ public class LogicSync {
                         }
 
                         listener.OnRespuestaSyncMaestros(lista);
-                        listener.onPrueba("dasasdasd");
-                        onMessageExitoSync();
+                        //listener.onPrueba("dasasdasd");
+                       // onMessageExitoSync();
 
                     }
                 }
@@ -66,7 +69,7 @@ public class LogicSync {
                 @Override
                 public void onFailure(Call<List<SyncMaestro>> call, Throwable t) {
                     Log.d("eeror", "asdf");
-                   onMessageFalloSync();
+                    onMessageFalloSync();
                 }
             });
 

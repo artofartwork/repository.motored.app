@@ -9,7 +9,8 @@ import java.util.List;
  */
 
 public interface OnRequestListener {
-
     void OnRespuestaSyncMaestros(List<SyncMaestro> lista);
-    void onPrueba(String data);
+    void onMessageExitoSync(String nombreMaestro);
+    void onMessageFalloSync(String nombreMaestro);
+
 }

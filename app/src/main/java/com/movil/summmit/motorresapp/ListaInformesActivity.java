@@ -24,8 +24,10 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.movil.summmit.motorresapp.Adapters.InformeTecnicoAdapter;
+import com.movil.summmit.motorresapp.Listeners.OnRequestListener;
 import com.movil.summmit.motorresapp.LogicMethods.LogicGeneral;
 import com.movil.summmit.motorresapp.LogicMethods.LogicMaestro;
+import com.movil.summmit.motorresapp.LogicMethods.LogicSync;
 import com.movil.summmit.motorresapp.LogicMethods.Repository;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnico;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntos;
@@ -45,6 +47,7 @@ import com.movil.summmit.motorresapp.Models.Enity.Maestro.HelpMaestro;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.MaestraArgu;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Marca;
 import com.movil.summmit.motorresapp.Models.Enity.Maestro.Modelo;
+import com.movil.summmit.motorresapp.Models.Enity.Maestro.SyncMaestro;
 import com.movil.summmit.motorresapp.Request.ApiClienteInformes;
 import com.movil.summmit.motorresapp.Request.ReturnValue;
 import com.movil.summmit.motorresapp.Storage.Files.FilesControl;
@@ -75,11 +78,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ListaInformesActivity extends AppCompatActivity {
+public class ListaInformesActivity extends AppCompatActivity implements OnRequestListener{
 
     private View flayLoading, container;
     private InformeTecnicoAdapter mAdapter;
     SwipeController swipeController = null;
+    LogicMaestro logicMaestro ;
     private CasoTecnicoRepository casoTecnicoRepository;
    /* private InformeTecnicoRepository informeTecnicoRepository;
     private EmpresaRepository empresaRepository;
@@ -91,6 +95,7 @@ public class ListaInformesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Spinner spnEmpresa, spnSucursal, spnArea, spnMarca, spnModelo;
     Button btnBuscar;
+    private OnRequestListener listener;
     PreferencesHelper preferencesHelper;
 
     @Override
@@ -295,29 +300,8 @@ public class ListaInformesActivity extends AppCompatActivity {
     public void sincronizarDatos(){
 
 
-        try
-        {
-            showLoading();
-            LogicMaestro logicMaestro = new LogicMaestro(this);
-            logicMaestro.SyncEmpresa();
-            logicMaestro.SyncCasoTecnico();
-            logicMaestro.SyncCliente();
-            logicMaestro.SyncEmpleado();
-            logicMaestro.SyncMaestra();
-            logicMaestro.SyncMaestraArgu();
-            logicMaestro.SyncMarca();
-            logicMaestro.SyncModelo();
-            logicMaestro.SyncVin();
-            logicMaestro.SyncUsuario();
-
-            hideLoading();
-            onMessageExitoSync();
-
-
-        }catch (Exception e)
-        {
-            onMessageErrorSync();
-        }
+        LogicSync logicSync = new LogicSync(this,this, flayLoading);
+        logicSync.SyncMaestrosAud();
 
 
     }
@@ -355,7 +339,7 @@ public class ListaInformesActivity extends AppCompatActivity {
         return type;
     }
 
-    public void tomasu(View view)
+    public void tomasu()
     {
         try {
 
@@ -536,6 +520,89 @@ public class ListaInformesActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void OnRespuestaSyncMaestros(List<SyncMaestro> listaSync) {
+
+        logicMaestro = new LogicMaestro(this,this,flayLoading, 0);
+        List<SyncMaestro> lstalocal = repository.syncMaestroRepository().findAll();
+        if (lstalocal.size() == 0)
+        {
+            logicMaestro.SyncCasoTecnico();
+            logicMaestro.SyncCliente();
+            logicMaestro.SyncEmpleado();
+            logicMaestro.SyncEmpresa();
+            logicMaestro.SyncMaestra();
+            logicMaestro.SyncMaestraArgu();
+            logicMaestro.SyncMarca();
+            logicMaestro.SyncModelo();
+            logicMaestro.SyncUsuario();
+            logicMaestro.SyncVin();
+
+            for (SyncMaestro obj:listaSync  )
+            {
+                repository.syncMaestroRepository().create(obj);
+            }
+        }
+        else
+        {
+
+            logicMaestro = new LogicMaestro(this,this,flayLoading, 1);
+            flayLoading.setVisibility(View.GONE);
+            for (SyncMaestro objSyn: listaSync )
+            {
+                SyncMaestro objlocal = repository.syncMaestroRepository().getMaestroSync(objSyn.getNombreTabla());
+                if ( ! objSyn.getAudFechaModifica().equals(objlocal.getAudFechaModifica()))
+                {
+                    repository.syncMaestroRepository().update(objSyn);
+                    switch (objSyn.getNombreTabla())
+                    {
+                        case HelpMaestro.MAESTRO_CASOTECNICO:
+                            logicMaestro.SyncCasoTecnico();
+                            break;
+                        case HelpMaestro.MAESTRO_CLIENTE:
+                            logicMaestro.SyncCliente();
+                            break;
+                        case HelpMaestro.MAESTRO_EMPLEADO:
+                            logicMaestro.SyncEmpleado();
+                            break;
+                        case HelpMaestro.MAESTRO_EMPRESA:
+                            logicMaestro.SyncEmpresa();
+                            break;
+                        case HelpMaestro.MAESTRO_MAESTRA:
+                            logicMaestro.SyncMaestra();
+                            break;
+                        case HelpMaestro.MAESTRO_MAESTRAARGU:
+                            logicMaestro.SyncMaestraArgu();
+                            break;
+                        case HelpMaestro.MAESTRO_MARCA:
+                            logicMaestro.SyncMarca();
+                            break;
+                        case HelpMaestro.MAESTRO_MODELO:
+                            logicMaestro.SyncModelo();
+                            break;
+                        case HelpMaestro.MAESTRO_USUARIO:
+                            logicMaestro.SyncUsuario();
+                            break;
+                        case HelpMaestro.MAESTRO_VIN:
+                            logicMaestro.SyncVin();
+                            break;
+                    }
+                }
+
+            }
+
+        }
 
     }
+
+    @Override
+    public void onMessageExitoSync(String nombreMaestro) {
+
+    }
+
+    @Override
+    public void onMessageFalloSync(String nombreMaestro) {
+
+    }
+}
 
