@@ -220,4 +220,42 @@ public class LogicGeneral {
         return RequestBody.create(
                 okhttp3.MultipartBody.FORM, descriptionString);
     }
+
+    public void syncInformeTecnico(InformeTecnico informeTecnico,
+                                   List<InformeTecnicoAntecedente> informeTecnicoAntecedentes,   List<InformeTecnicoFalla> informeTecnicoFallas,  List<InformeTecnicoConclusiones> informeTecnicoConclusionesList,
+                                   List<InformeTecnicoRecomendaciones> informeTecnicoRecomendacionesList,    InformeTecnicoAdjuntos informeTecnicoAdjuntos   )
+    {
+        try
+        {
+            informeTecnico.setListaAntecedentes(informeTecnicoAntecedentes);
+            informeTecnico.setListaFallas(informeTecnicoFallas);
+            informeTecnico.setListaConclusiones(informeTecnicoConclusionesList);
+            informeTecnico.setListaRecomendaciones(informeTecnicoRecomendacionesList);
+            informeTecnico.setInformeTecnicoAdjuntos(informeTecnicoAdjuntos);
+
+
+            Call<ReturnValue> call = ApiClienteInformes.getMyApiClient()
+                    .sycInformeTecnicoother(informeTecnico);//, informeTecnicoAntecedentes);
+
+            call.enqueue(new Callback<ReturnValue>() {
+                @Override
+                public void onResponse(Call<ReturnValue> call, Response<ReturnValue> response) {
+
+                    Log.d("Send data informe", "success");
+                }
+
+                @Override
+                public void onFailure(Call<ReturnValue> call, Throwable t) {
+                    Log.d("Send data informe", "error");
+
+                }
+            });
+
+
+        }
+        catch (Exception e)
+        {
+            String msg = e.getMessage();
+        }
+    }
 }

@@ -11,6 +11,8 @@ public class PreferencesHelper {
     private static final String PREFERENCES_PASSWORD = MYNOTES_PREFERENCES + ".password";
     private static final String PREFERENCES_IDUSUARIO = MYNOTES_PREFERENCES + ".idusuario";
     private static final String PREFERENCES_CARPETA = MYNOTES_PREFERENCES + ".carpeta";
+    private static final String PREFERENCES_ACTION = ".currentaction";
+
     private PreferencesHelper() {
         //no instance
     }
@@ -32,6 +34,21 @@ public class PreferencesHelper {
         editor.putString(PREFERENCES_CARPETA, "CARPETA_MOTORRED");
         editor.apply();
     }
+
+    public static void saveAction(Context context,String action)
+    {
+        SharedPreferences.Editor editor = getEditor(context);
+        editor.putString(PREFERENCES_ACTION, action);
+        editor.apply();
+    }
+    public static String getAction(Context context)
+    {
+        SharedPreferences sharedPreferences= getSharedPreferences(context);
+        String action= sharedPreferences.getString(PREFERENCES_ACTION,null);
+
+        return action;
+    }
+
 
     public static String getUserSession(Context context)
     {

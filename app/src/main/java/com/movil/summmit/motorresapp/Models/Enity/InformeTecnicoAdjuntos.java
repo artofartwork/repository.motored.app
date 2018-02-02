@@ -3,11 +3,14 @@ package com.movil.summmit.motorresapp.Models.Enity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by cgonzalez on 16/01/2018.
  */
 @DatabaseTable
-public class InformeTecnicoAdjuntos {
+public class InformeTecnicoAdjuntos implements Serializable {
     @DatabaseField(generatedId = true)
     private int IdAdjuntos;
     @DatabaseField
@@ -34,6 +37,9 @@ public class InformeTecnicoAdjuntos {
     private String ArchivoRuta;
     @DatabaseField
     private int ArchivoTamano;
+
+
+    private List<InformeTecnicoAdjuntosDetalle> ListaAdjuntosDetalle;
 
     public int getIdAdjuntos() {
         return IdAdjuntos;
@@ -137,5 +143,13 @@ public class InformeTecnicoAdjuntos {
 
     public void setArchivoNombreKmGenerado(String archivoNombreKmGenerado) {
         ArchivoNombreKmGenerado = archivoNombreKmGenerado;
+    }
+
+    public List<InformeTecnicoAdjuntosDetalle> getListaAdjuntosDetalle() {
+        return ListaAdjuntosDetalle;
+    }
+
+    public void setListaAdjuntosDetalle(List<InformeTecnicoAdjuntosDetalle> listaAdjuntosDetalle) {
+        ListaAdjuntosDetalle = listaAdjuntosDetalle;
     }
 }

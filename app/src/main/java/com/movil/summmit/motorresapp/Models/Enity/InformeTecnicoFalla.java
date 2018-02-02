@@ -3,6 +3,7 @@ package com.movil.summmit.motorresapp.Models.Enity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by cgonzalez on 12/01/2018.
  */
 @DatabaseTable
-public class InformeTecnicoFalla {
+public class InformeTecnicoFalla implements Serializable {
     @DatabaseField(generatedId = true)
     private int IdInformeTecnicoFalla;
     @DatabaseField
@@ -66,7 +67,10 @@ public class InformeTecnicoFalla {
 
     private String NombresTecnicos;
 
-
+    private List<InformeTecnicoFallaxEmpleado> ListaInformeTecnicoPorEmpleado;
+    private List<InformeTecnicoFallaCausa> ListaInformeTecnicoCausa;
+    private List<InformeTecnicoFallaCorrectivos> ListaInformeTecnicoCorrectivos;
+    private List<InformeTecnicoFallaDiagnostico> ListaInformeTecnicoDiagnostico;
 
     public int getIdInformeTecnicoFalla() {
         return IdInformeTecnicoFalla;
@@ -277,4 +281,35 @@ public class InformeTecnicoFalla {
     }
 
 
+    public List<InformeTecnicoFallaxEmpleado> getListaInformeTecnicoPorEmpleado() {
+        return ListaInformeTecnicoPorEmpleado;
+    }
+
+    public void setListaInformeTecnicoPorEmpleado(List<InformeTecnicoFallaxEmpleado> listaInformeTecnicoPorEmpleado) {
+        ListaInformeTecnicoPorEmpleado = listaInformeTecnicoPorEmpleado;
+    }
+
+    public List<InformeTecnicoFallaCausa> getListaInformeTecnicoCausa() {
+        return ListaInformeTecnicoCausa;
+    }
+
+    public void setListaInformeTecnicoCausa(List<InformeTecnicoFallaCausa> listaInformeTecnicoCausa) {
+        ListaInformeTecnicoCausa = listaInformeTecnicoCausa;
+    }
+
+    public List<InformeTecnicoFallaCorrectivos> getListaInformeTecnicoCorrectivos() {
+        return ListaInformeTecnicoCorrectivos;
+    }
+
+    public void setListaInformeTecnicoCorrectivos(List<InformeTecnicoFallaCorrectivos> listaInformeTecnicoCorrectivos) {
+        ListaInformeTecnicoCorrectivos = listaInformeTecnicoCorrectivos;
+    }
+
+    public List<InformeTecnicoFallaDiagnostico> getListaInformeTecnicoDiagnostico() {
+        return ListaInformeTecnicoDiagnostico;
+    }
+
+    public void setListaInformeTecnicoDiagnostico(List<InformeTecnicoFallaDiagnostico> listaInformeTecnicoDiagnostico) {
+        ListaInformeTecnicoDiagnostico = listaInformeTecnicoDiagnostico;
+    }
 }

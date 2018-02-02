@@ -5,6 +5,7 @@ import android.content.Context;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAntecedente;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoFalla;
 import com.movil.summmit.motorresapp.Storage.db.DatabaseHelper;
 import com.movil.summmit.motorresapp.Storage.db.manager.DatabaseManager;
@@ -75,6 +76,21 @@ public class InformeTecnicoFallaRepository {
 
         return null;
     }
+
+    public List<InformeTecnicoFalla> ListarxInforme(int IdInformeTecnico)
+    {
+        try
+        {
+            QueryBuilder<InformeTecnicoFalla, Integer> qb = entidadDao.queryBuilder();
+            qb.where().eq("IdInformeTecnico", IdInformeTecnico);
+            return qb.query();
+
+        }catch (SQLException e)
+        {
+            return  null;
+        }
+    }
+
 
     public List<InformeTecnicoFalla> findAllxInforme(int IdInforme) {
         try {

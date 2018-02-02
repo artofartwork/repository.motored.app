@@ -13,8 +13,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
 
+import com.movil.summmit.motorresapp.LogicMethods.Repository;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoConclusiones;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoRecomendaciones;
+import com.movil.summmit.motorresapp.Storage.PreferencesHelper;
 import com.movil.summmit.motorresapp.Storage.db.repository.InformeTecnicoConclusionesRepository;
 import com.movil.summmit.motorresapp.Storage.db.repository.InformeTecnicoRecomendacionesRepository;
 
@@ -26,10 +28,12 @@ public class ConclusionesRecomendacionesActivity extends AppCompatActivity {
     EditText edtConclusiones, edtRecomendaciones;
     ListView lsvConclusiones, lsvRecomendaciones;
     int IdInformeTecnico = 0;
-    InformeTecnicoConclusionesRepository informeTecnicoConclusionesRepository;
-    InformeTecnicoRecomendacionesRepository informeTecnicoRecomendacionesRepository;
+    Repository repository;
     ArrayList<String> lstConclusiones;
     ArrayList<String> lstRecomendaciones;
+
+    ArrayList<String> lstConclusionesguardadas;
+    ArrayList<String> lstRecomendacionesguardadas;
     ArrayAdapter<String> adaptatadorComentario;
     java.util.Date utilDatehoy;
     java.sql.Date sqlDatehoy;
@@ -37,21 +41,21 @@ public class ConclusionesRecomendacionesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conclusiones_recomendaciones);
-
+        repository = new Repository(this);
         utilDatehoy = new java.util.Date();
         sqlDatehoy =  new java.sql.Date(utilDatehoy.getTime());
 
         Intent myIntent = getIntent();
         IdInformeTecnico = myIntent.getIntExtra("IdInformeTecnico", 0);
 
-        informeTecnicoConclusionesRepository = new InformeTecnicoConclusionesRepository(this);
-        informeTecnicoRecomendacionesRepository = new InformeTecnicoRecomendacionesRepository(this);
-
         init();
     }
 
     public void init()
     {
+        lsvConclusiones =(ListView)findViewById(R.id.lsvConclusiones);
+        lsvRecomendaciones =(ListView)findViewById(R.id.lsvRecomendaciones);
+
         edtRecomendaciones = (EditText)findViewById(R.id.edtRecomendaciones);
         edtConclusiones = (EditText)findViewById(R.id.edtConclusiones);
 
@@ -78,8 +82,13 @@ public class ConclusionesRecomendacionesActivity extends AppCompatActivity {
         lstConclusiones = new ArrayList<>();
         lstRecomendaciones = new ArrayList<>();
 
-        lsvConclusiones =(ListView)findViewById(R.id.lsvConclusiones);
-        lsvRecomendaciones =(ListView)findViewById(R.id.lsvRecomendaciones);
+        lstConclusionesguardadas = repository.informeTecnicoConclusionesRepository().findAllDescxInforme(IdInformeTecnico);
+        populateListConclusiones();
+        lstRecomendacionesguardadas = repository.informeTecnicoRecomendacionesRepository().findAllDescxInforme(IdInformeTecnico);
+        populateListRecomen();
+
+
+
 
         Resources res = getResources();
         TabHost tabs=(TabHost)findViewById(android.R.id.tabhost);
@@ -105,7 +114,6 @@ public class ConclusionesRecomendacionesActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_nuevo, menu);
         super.onCreateOptionsMenu(menu);
         return true;
-
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -121,7 +129,7 @@ public class ConclusionesRecomendacionesActivity extends AppCompatActivity {
                     objnew.setAudFechaRegistro(sqlDatehoy);
                     objnew.setAudUsuarioRegistro(1);
                     objnew.setDescripcion(texto);
-                    informeTecnicoConclusionesRepository.create(objnew);
+                    repository.informeTecnicoConclusionesRepository().create(objnew);
                 }
                 for (String texto: lstRecomendaciones)
                 {
@@ -130,17 +138,25 @@ public class ConclusionesRecomendacionesActivity extends AppCompatActivity {
                     objnew.setAudFechaRegistro(sqlDatehoy);
                     objnew.setAudUsuarioRegistro(1);
                     objnew.setDescripcion(texto);
-                    informeTecnicoRecomendacionesRepository.create(objnew);
+                   repository.informeTecnicoRecomendacionesRepository().create(objnew);
                 }
 
-                Intent inte =new Intent(ConclusionesRecomendacionesActivity.this, AdjuntosActivity.class);
-                inte.putExtra("IdInformeTecnico", IdInformeTecnico);
-                startActivity(inte);
+                Intent inte;
+                if (PreferencesHelper.getAction(ConclusionesRecomendacionesActivity.this) == "update")
+                {
+                    inte =new Intent(ConclusionesRecomendacionesActivity.this, EditarAdjuntosActivity.class);
+                    inte.putExtra("IdInformeTecnico", IdInformeTecnico);
+                    startActivity(inte);
+                }
+                else if (PreferencesHelper.getAction(ConclusionesRecomendacionesActivity.this) == "new")
+                {
+                    inte =new Intent(ConclusionesRecomendacionesActivity.this, AdjuntosActivity.class);
+                    inte.putExtra("IdInformeTecnico", IdInformeTecnico);
+                    startActivity(inte);
+                }
 
                 break;
         }
-
-
 
         return true;
     }
@@ -153,21 +169,45 @@ public class ConclusionesRecomendacionesActivity extends AppCompatActivity {
             {
                 case "C":
                     lstConclusiones.add(comentario);
-                    adaptatadorComentario = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, lstConclusiones);
-                    lsvConclusiones.setAdapter(adaptatadorComentario);
-                    adaptatadorComentario = null;
+                    populateListConclusiones();
+                    //adaptatadorComentario = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, lstConclusiones);
+                    //lsvConclusiones.setAdapter(adaptatadorComentario);
+                    //adaptatadorComentario = null;
                     break;
                 case "R":
                     lstRecomendaciones.add(comentario);
-                    adaptatadorComentario = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, lstRecomendaciones);
-                    lsvRecomendaciones.setAdapter(adaptatadorComentario);
-                    adaptatadorComentario = null;
+                    populateListRecomen();
+                   // adaptatadorComentario = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, lstRecomendaciones);
+                    //lsvRecomendaciones.setAdapter(adaptatadorComentario);
+                    //adaptatadorComentario = null;
                     break;
 
             }
         }
 
 
+    }
+
+    private void populateListConclusiones()
+    {
+
+        ArrayList<String> listacon = new ArrayList<>();
+        listacon.addAll(lstConclusionesguardadas);
+        listacon.addAll(lstConclusiones);
+
+        adaptatadorComentario = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, listacon);
+        lsvConclusiones.setAdapter(adaptatadorComentario);
+        adaptatadorComentario = null;
+    }
+    private void populateListRecomen()
+    {
+        ArrayList<String> listareco = new ArrayList<>();
+        listareco.addAll(lstRecomendacionesguardadas);
+        listareco.addAll(lstRecomendaciones);
+
+        adaptatadorComentario = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, listareco);
+        lsvRecomendaciones.setAdapter(adaptatadorComentario);
+        adaptatadorComentario = null;
     }
 
 }

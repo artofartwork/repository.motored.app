@@ -154,7 +154,7 @@ public class LogicMaestro {
 
     }
 
-    
+
     public int SyncCasoTecnico()
     {
         progressDialog.setVisibility(View.VISIBLE);

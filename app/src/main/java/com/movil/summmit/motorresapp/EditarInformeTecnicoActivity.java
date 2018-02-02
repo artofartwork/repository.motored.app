@@ -45,6 +45,8 @@ public class EditarInformeTecnicoActivity extends AppCompatActivity implements O
     private FilesControl controlFile;
     int IdInformeTecnico = 0;
     InformeTecnico objInforme;
+    java.util.Date utilDatehoy = new java.util.Date();
+    java.sql.Date sqlDatehoy = new java.sql.Date(utilDatehoy.getTime());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -288,6 +290,8 @@ public class EditarInformeTecnicoActivity extends AppCompatActivity implements O
     @Override
     public void recibiryEnviardesdeFragment(String message) {
         InformeTecnicoAntecedente objInfAnt = new InformeTecnicoAntecedente();
+        objInfAnt.setAudUsuarioRegistro(1);
+        objInfAnt.setAudFechaRegistro(sqlDatehoy);
         objInfAnt.setDescripcion(message);
         objInfAnt.setEsNuevo(true);
         lstInformeTecnicoAntecedentesAgregados.add(objInfAnt);
@@ -331,11 +335,9 @@ public class EditarInformeTecnicoActivity extends AppCompatActivity implements O
                     {
                         int IdGenerado = repository.informeTecnicoRepository().update(objInforme);
                         // si todo sale bien se guardan los antecedentes
-                        if (IdGenerado > 0)
-                        {
-                            String carpeta = "INFORME_" + IdGenerado;
-                            controlFile.getAlbumStorageDirEstacion(carpeta);
 
+                            //String carpeta = "INFORME_" + IdGenerado;
+                            //controlFile.getAlbumStorageDirEstacion(carpeta);
                             for (InformeTecnicoAntecedente obj: lstInformeTecnicoAntecedentesAgregados)
                             {
                                 if (obj.getEsNuevo())
@@ -345,7 +347,7 @@ public class EditarInformeTecnicoActivity extends AppCompatActivity implements O
                                 }
 
                             }
-                        }
+
 
                         Intent inte =new Intent(EditarInformeTecnicoActivity.this, AnalisisCausaFallaActivity.class);
                         inte.putExtra("IdInformeTecnico", IdGenerado);
@@ -506,8 +508,7 @@ public class EditarInformeTecnicoActivity extends AppCompatActivity implements O
             objInforme.setObservacion(reclamo);
 
 
-            java.util.Date utilDatehoy = new java.util.Date();
-            java.sql.Date sqlDatehoy = new java.sql.Date(utilDatehoy.getTime());
+
             objInforme.setAudFechaModifica(sqlDatehoy);
 
             objInforme.setAudUsuarioModifica(1);

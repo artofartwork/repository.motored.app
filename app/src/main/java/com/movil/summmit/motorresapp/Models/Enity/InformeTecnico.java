@@ -16,7 +16,7 @@ import java.util.List;
 public class InformeTecnico implements Serializable {
 
 
-        private byte[] archivo;
+        //private byte[] archivo;
     @DatabaseField(generatedId = true)
         private int IdInformeTecnico;
     @DatabaseField
@@ -343,12 +343,15 @@ public class InformeTecnico implements Serializable {
         NombreComponente = nombreComponente;
     }
 
-    public byte[] getArchivo() {
-        return archivo;
+
+
+
+    public List<InformeTecnicoAntecedente> getListaAntecedentes() {
+        return ListaAntecedentes;
     }
 
-    public void setArchivo(byte[] archivo) {
-        this.archivo = archivo;
+    public void setListaAntecedentes(List<InformeTecnicoAntecedente> listaAntecedentes) {
+        ListaAntecedentes = listaAntecedentes;
     }
 
     public List<InformeTecnicoFalla> getListaFallas() {
@@ -381,13 +384,5 @@ public class InformeTecnico implements Serializable {
 
     public void setInformeTecnicoAdjuntos(InformeTecnicoAdjuntos informeTecnicoAdjuntos) {
         this.informeTecnicoAdjuntos = informeTecnicoAdjuntos;
-    }
-
-    public List<InformeTecnicoAntecedente> getListaAntecedentes() {
-        return ListaAntecedentes;
-    }
-
-    public void setListaAntecedentes(List<InformeTecnicoAntecedente> listaAntecedentes) {
-        ListaAntecedentes = listaAntecedentes;
     }
 }

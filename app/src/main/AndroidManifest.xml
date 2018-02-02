@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -31,7 +30,7 @@
         <activity android:name=".ListaInformesActivity" />
         <activity android:name=".NuevoInformeActivity" />
         <activity android:name=".AnalisisCausaFallaActivity" />
-        <activity android:name=".DetalleCausaAnalisisFallaActivity"></activity>
+        <activity android:name=".DetalleCausaAnalisisFallaActivity" />
         <activity android:name=".ConclusionesRecomendacionesActivity" />
         <activity android:name=".AdjuntosActivity" />
         <activity android:name=".GuardarEnviarActivity" />
@@ -39,7 +38,8 @@
         <activity android:name=".FilePickActivity" />
         <activity android:name=".DetailInformeTecnicoActivity" />
         <activity android:name=".DetailTwoActivity" />
-        <activity android:name=".EditarDetalleCausaActivity"></activity>
+        <activity android:name=".EditarDetalleCausaActivity" />
+        <activity android:name=".EditarAdjuntosActivity"></activity>
     </application>
 
 </manifest>

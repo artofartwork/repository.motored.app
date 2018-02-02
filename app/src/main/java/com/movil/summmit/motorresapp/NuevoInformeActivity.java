@@ -60,7 +60,8 @@ public class NuevoInformeActivity extends AppCompatActivity implements OnAnteced
     ArrayAdapter<String> adapterStringAntecedentes;
     private Repository repository;
     private FilesControl controlFile;
-
+    java.util.Date utilDatehoy = new java.util.Date();
+    java.sql.Date sqlDatehoy = new java.sql.Date(utilDatehoy.getTime());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -254,8 +255,7 @@ public class NuevoInformeActivity extends AppCompatActivity implements OnAnteced
             objInforme.setEstado("Nuevo");
             objInforme.setActivo(true);
 
-            java.util.Date utilDatehoy = new java.util.Date();
-            java.sql.Date sqlDatehoy = new java.sql.Date(utilDatehoy.getTime());
+
             objInforme.setAudFechaModifica(sqlDatehoy);
             objInforme.setAudFechaRegistro(sqlDatehoy);
             objInforme.setAudUsuarioModifica(1);
@@ -474,6 +474,8 @@ public class NuevoInformeActivity extends AppCompatActivity implements OnAnteced
         //aquim se obtiene el dato enviad ´por el fraghmwent
         InformeTecnicoAntecedente objInfAnt = new InformeTecnicoAntecedente();
         objInfAnt.setDescripcion(message);
+        objInfAnt.setAudFechaRegistro(sqlDatehoy);
+        objInfAnt.setAudUsuarioRegistro(1);
         lstInformeTecnicoAntecedentesAgregados.add(objInfAnt);
         populateListAntecedentes();
     }

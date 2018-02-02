@@ -3,11 +3,13 @@ package com.movil.summmit.motorresapp.Models.Enity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * Created by cgonzalez on 16/01/2018.
  */
 @DatabaseTable
-public class InformeTecnicoAdjuntosDetalle {
+public class InformeTecnicoAdjuntosDetalle implements Serializable {
     @DatabaseField(generatedId = true)
     private int IdAdjuntosDetalle;
     @DatabaseField

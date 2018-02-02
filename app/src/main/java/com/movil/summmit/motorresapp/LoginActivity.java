@@ -182,8 +182,6 @@ public class LoginActivity extends AppCompatActivity implements OnRequestListene
 
         }
 
-
-        //return super.onOptionsItemSelected(item);
         return true;
     }
 
@@ -204,7 +202,6 @@ public class LoginActivity extends AppCompatActivity implements OnRequestListene
         //LogicSync logicSync = new LogicSync(this,flayLoading);
         // logicSync.SyncMaestrosAud();
 
-
     }
 
     @Override
@@ -217,6 +214,16 @@ public class LoginActivity extends AppCompatActivity implements OnRequestListene
             for (SyncMaestro obj:listaSync  )
             {
                 repository.syncMaestroRepository().create(obj);
+                logicMaestro.SyncCasoTecnico();
+                logicMaestro.SyncCliente();
+                logicMaestro.SyncEmpleado();
+                logicMaestro.SyncEmpresa();
+                logicMaestro.SyncMaestra();
+                logicMaestro.SyncMaestraArgu();
+                logicMaestro.SyncMarca();
+                logicMaestro.SyncModelo();
+                logicMaestro.SyncUsuario();
+                logicMaestro.SyncVin();
             }
         }
         else

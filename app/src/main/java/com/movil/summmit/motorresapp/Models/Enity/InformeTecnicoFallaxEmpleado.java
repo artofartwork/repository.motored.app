@@ -3,6 +3,7 @@ package com.movil.summmit.motorresapp.Models.Enity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.sql.Date;
  */
 
 @DatabaseTable
-public class InformeTecnicoFallaxEmpleado {
+public class InformeTecnicoFallaxEmpleado implements Serializable {
 
     @DatabaseField
     private int IdInformeTecnicoFalla;

@@ -86,7 +86,7 @@ public class InformeTecnicoFallaCausaRepository {
         return null;
     }
 
-    public List<String> findAllxInformeTecnicoFalla(int IdInformeTecnicoFalla) {
+    public ArrayList<String> findAllxInformeTecnicoFalla(int IdInformeTecnicoFalla) {
         try {
 
            /* QueryBuilder qb = entidadDao.queryBuilder();
@@ -95,7 +95,7 @@ public class InformeTecnicoFallaCausaRepository {
             qb.where()
                     .eq("IdInformeTecnicoFalla", IdInformeTecnicoFalla);
             return qb.query();*/
-            List<String> lista = new ArrayList<>();
+            ArrayList<String> lista = new ArrayList<>();
 
             GenericRawResults<String[]> rawResults =
                     entidadDao.queryRaw(

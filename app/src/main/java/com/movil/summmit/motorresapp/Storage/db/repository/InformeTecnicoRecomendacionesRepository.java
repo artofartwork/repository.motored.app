@@ -3,12 +3,14 @@ package com.movil.summmit.motorresapp.Storage.db.repository;
 import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoRecomendaciones;
 import com.movil.summmit.motorresapp.Storage.db.DatabaseHelper;
 import com.movil.summmit.motorresapp.Storage.db.manager.DatabaseManager;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -80,6 +82,33 @@ public class InformeTecnicoRecomendacionesRepository {
             qb.where()
                     .eq("IdInformeTecnico", IdInforme);
             return qb.query();
+            //return entidadDao.queryForAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public ArrayList<String> findAllDescxInforme(int IdInforme) {
+        try {
+
+            ArrayList<String> lista = new ArrayList<>();
+
+            GenericRawResults<String[]> rawResults =
+                    entidadDao.queryRaw(
+                            "select " +
+                                    "inf.Descripcion "+
+                                    "from InformeTecnicoRecomendaciones as inf where inf.IdInformeTecnico =  " + IdInforme );
+
+            List<String[]> results = rawResults.getResults();
+
+            for (String[] result : results) {
+
+                lista.add(result[0]);
+            }
+            //return entidadDao.queryForAll();
+            return  lista;
             //return entidadDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();

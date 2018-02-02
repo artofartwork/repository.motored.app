@@ -85,6 +85,21 @@ public class InformeTecnicoAdjuntosDetalleRepository {
         return null;
     }
 
+    public List<InformeTecnicoAdjuntosDetalle> findAllxInforme(int IdInforme, int IdAdjunto) {
+        try {
+
+            QueryBuilder qb = entidadDao.queryBuilder();
+            qb.where()
+                    .eq("IdInformeTecnico", IdInforme).and().eq("IdAdjuntos", IdAdjunto);
+            return qb.query();
+           // return entidadDao.queryForAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public List<InformeTecnicoAdjuntosDetalle> findAllxInforme(int IdInforme) {
         try {
 
@@ -92,7 +107,7 @@ public class InformeTecnicoAdjuntosDetalleRepository {
             qb.where()
                     .eq("IdInformeTecnico", IdInforme);
             return qb.query();
-           // return entidadDao.queryForAll();
+            // return entidadDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }

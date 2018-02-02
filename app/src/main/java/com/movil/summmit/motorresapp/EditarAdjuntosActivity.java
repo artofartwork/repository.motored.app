@@ -7,32 +7,27 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.movil.summmit.motorresapp.LogicMethods.Repository;
-import com.movil.summmit.motorresapp.Models.Enity.InformeTecnico;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntos;
 import com.movil.summmit.motorresapp.Models.Enity.InformeTecnicoAdjuntosDetalle;
 import com.movil.summmit.motorresapp.Storage.Files.FilesControl;
-import com.movil.summmit.motorresapp.Storage.db.repository.InformeTecnicoAdjuntosDetalleRepository;
-import com.movil.summmit.motorresapp.Storage.db.repository.InformeTecnicoAdjuntosRepository;
 import com.vincent.filepicker.Constant;
 import com.vincent.filepicker.activity.NormalFilePickActivity;
 import com.vincent.filepicker.filter.entity.NormalFile;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdjuntosActivity extends AppCompatActivity {
-
+public class EditarAdjuntosActivity extends AppCompatActivity {
     LinearLayout layout;
+    ListView lstAdjuntosDetalle;
     EditText edtVin, edtKmHoras;
     TextInputLayout tmpVin, tmpKmHoras;
     List<EditText> listaEditTextFiles;
@@ -45,21 +40,44 @@ public class AdjuntosActivity extends AppCompatActivity {
     Integer Seleccion = 0;
     static NormalFile fileVin;
     static NormalFile fileKmHoras;
+    InformeTecnicoAdjuntos informeTecnicoAdjuntos;
 
+    int actualizoVin = 0;
+    int actualizoKm = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adjuntos);
+        setContentView(R.layout.activity_editar_adjuntos);
+
         Intent myIntent = getIntent(); // gets the previously created intent
         IdInformeTecnico = myIntent.getIntExtra("IdInformeTecnico", 0);
+
         repository = new Repository(this);
+
+        informeTecnicoAdjuntos = repository.informeTecnicoAdjuntosRepository().findxInforme(IdInformeTecnico);
+
         init();
+
         filesControl = new FilesControl();
-        estacionPath =  filesControl.getAlbumStorageDirEstacion("INFORME_" + IdInformeTecnico) + File.separator; //+ "hola.txt";
+        estacionPath =  filesControl.getAlbumStorageDirEstacion("INFORME_" + IdInformeTecnico) + File.separator;
+
+
+        List<InformeTecnicoAdjuntosDetalle> listaDetalles = repository.informeTecnicoAdjuntosDetalleRepository().findAllxInforme(IdInformeTecnico, informeTecnicoAdjuntos.getIdAdjuntos());
+        ArrayList<String> detalles = new ArrayList<>();
+        for (InformeTecnicoAdjuntosDetalle obj : listaDetalles)
+        {
+            detalles.add(obj.getArchivoNombre());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, detalles);
+        lstAdjuntosDetalle.setAdapter(adapter);
+
+        edtVin.setText(informeTecnicoAdjuntos.getArchivoNombreVin());
+        edtKmHoras.setText(informeTecnicoAdjuntos.getArchivoNombreKm());
     }
 
     public void init()
     {
+        lstAdjuntosDetalle = (ListView)findViewById(R.id.lstAdjuntosDetalle);
         tmpVin = (TextInputLayout)findViewById(R.id.tmpVin);
         tmpKmHoras = (TextInputLayout)findViewById(R.id.tmpKmHoras);
 
@@ -109,24 +127,32 @@ public class AdjuntosActivity extends AppCompatActivity {
                     InformeTecnicoAdjuntos objMapper = mapperInformeTecnicoAdjuntos();
                     try
                     {
-                        int IdGenerado = repository.informeTecnicoAdjuntosRepository().create(objMapper);
+                        int IdGenerado = repository.informeTecnicoAdjuntosRepository().update(objMapper);
 
-                        if (objMapper.getArchivoNombreVin() != null)
+                        if (actualizoVin == 1)
                         {
-                            File srcVin = new File(fileVin.getPath());
-                            File destScaner = new File(estacionPath + objMapper.getArchivoNombreVinGenerado());
-                            filesControl.copy(srcVin, destScaner);
+                            if (objMapper.getArchivoNombreVin() != null)
+                            {
+                                File srcVin = new File(fileVin.getPath());
+                                File destScaner = new File(estacionPath + objMapper.getArchivoNombreVinGenerado());
+                                filesControl.copy(srcVin, destScaner);
 
-                        }
-                        if (objMapper.getArchivoNombreKm() != null)
-                        {
-                            File srcKm = new File(fileKmHoras.getPath());
-                            File destKM = new File(estacionPath + objMapper.getArchivoNombreKmGenerado());
-                            filesControl.copy(srcKm, destKM);
+                            }
                         }
 
-                        // si todo sale bien se guardan los comentarios
-                       List<InformeTecnicoAdjuntosDetalle> listaDetalle =   mapperAdjuntoDetalleLis();
+                        if (actualizoKm == 1)
+                        {
+                            if (objMapper.getArchivoNombreKm() != null)
+                            {
+                                File srcKm = new File(fileKmHoras.getPath());
+                                File destKM = new File(estacionPath + objMapper.getArchivoNombreKmGenerado());
+                                filesControl.copy(srcKm, destKM);
+                            }
+                        }
+
+
+
+                        List<InformeTecnicoAdjuntosDetalle> listaDetalle =   mapperAdjuntoDetalleLis();
                         if (IdGenerado > 0)
                         {
 
@@ -143,7 +169,7 @@ public class AdjuntosActivity extends AppCompatActivity {
 
                         }
 
-                        Intent inte =new Intent(AdjuntosActivity.this, GuardarEnviarActivity.class);
+                        Intent inte =new Intent(EditarAdjuntosActivity.this, GuardarEnviarActivity.class);
                         inte.putExtra("IdInformeTecnico", IdInformeTecnico);
                         startActivity(inte);
                     }
@@ -200,11 +226,13 @@ public class AdjuntosActivity extends AppCompatActivity {
                 {
                     case 1:
                         fileVin = list.get(0);
+                        actualizoVin = 1;
                         // filename = "vin_" + filename;
                         edtVin.setText(fileVin.getPath());
                         break;
                     case 2:
                         fileKmHoras = list.get(0);
+                        actualizoKm = 1;
                         // filename = "kmh_" + filename;
                         edtKmHoras.setText(fileKmHoras.getPath());
                         break;
@@ -247,17 +275,25 @@ public class AdjuntosActivity extends AppCompatActivity {
 
     public InformeTecnicoAdjuntos mapperInformeTecnicoAdjuntos()
     {
-        InformeTecnicoAdjuntos objInforme = new InformeTecnicoAdjuntos();
-        objInforme.setIdInformeTecnico(IdInformeTecnico);
-        Long timesVin = (System.currentTimeMillis() / 1000)+1;
-        objInforme.setArchivoNombreVin(filesControl.getFileName(fileVin.getPath()) );
-        objInforme.setArchivoNombreVinGenerado( timesVin + "_" + filesControl.getFileName(fileVin.getPath()));
 
-        Long timesKm = (System.currentTimeMillis() / 1000)+2;
-        objInforme.setArchivoNombreKm(filesControl.getFileName(fileKmHoras.getPath()) );
-        objInforme.setArchivoNombreKmGenerado( timesKm + "_" + filesControl.getFileName(fileKmHoras.getPath()));
+        if (actualizoVin == 1)
+        {
+            Long timesVin = (System.currentTimeMillis() / 1000)+1;
+            informeTecnicoAdjuntos.setArchivoNombreVin(filesControl.getFileName(fileVin.getPath()) );
+            informeTecnicoAdjuntos.setArchivoNombreVinGenerado( timesVin + "_" + filesControl.getFileName(fileVin.getPath()));
+        }
 
-        return  objInforme;
+
+        if (actualizoKm == 1)
+        {
+            Long timesKm = (System.currentTimeMillis() / 1000)+2;
+            informeTecnicoAdjuntos.setArchivoNombreKm(filesControl.getFileName(fileKmHoras.getPath()) );
+            informeTecnicoAdjuntos.setArchivoNombreKmGenerado( timesKm + "_" + filesControl.getFileName(fileKmHoras.getPath()));
+        }
+
+
+
+        return  informeTecnicoAdjuntos;
     }
 
     public List<InformeTecnicoAdjuntosDetalle>  mapperAdjuntoDetalleLis(){
